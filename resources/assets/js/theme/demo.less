@@ -1,0 +1,161 @@
+/*style for demo*/
+//variable
+@sidebar-width: 210px;
+@nav-height: 60px;
+@primary-color : #000;
+
+body{
+  background-color: @background-color-base;
+  font-family: DINRegular,-apple-system,BlinkMacSystemFont,PingFang SC,Helvetica Neue,Hiragino Sans GB,Segoe UI,Microsoft YaHei,sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img{
+  border-radius: @btn-border-radius;
+}
+.vm-margin{
+  margin-top: 15px;
+}
+#app {
+  text-align: center;
+  .header{
+    z-index: 999;
+    width: 100%;
+    height: @nav-height;
+    top: 0;
+    position: fixed;
+    background: white;
+    border-bottom: 1px solid #dddee1;
+    padding: 0 0 0 20px;
+    img{
+      border-radius:0px;
+    }
+    .logo{
+      color: @link-color;
+      font-size: 20px;
+      font-weight: bold;
+      span{
+        color: @primary-color
+      }
+      img{
+        vertical-align: middle;
+      }
+    }
+    .login-info{
+      position: absolute;
+      right: 10px;
+      font-size: 18px;
+      img{
+        vertical-align: middle;
+        margin-right: 6px;
+      }
+      button{
+        padding: 6px;
+      }
+      li{
+        i{
+          margin-right: 6px;
+        }
+      }
+    }
+    
+  }
+  .sidebar{
+    height: 100%;
+    width: @sidebar-width;
+    top: 0;
+    position: fixed;
+    background-color: white;
+    li{
+      text-align: left;
+      a{
+        color: inherit;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        i{
+          margin-right: 10px;
+        }
+      }
+    }
+    .menu{
+      margin-top: 70px;
+    }
+  }
+  .main-content{
+    position: relative;
+    margin-left: @sidebar-width;
+    padding: 60px 15px 15px 15px;
+  }
+}
+
+.demo-news{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panel{
+  .demo-circle{
+    height: 250px;
+  }
+}
+
+.login, .lock-screen{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.vm-author{
+  line-height: 45px;
+  font-size: 14px;
+  a{
+    color: @primary-color;
+  }
+}
+
+.dashboard, .widget, .charts{
+  &>.ivu-row{
+    &>.ivu-col{
+      margin-top: 15px;
+    }
+  }
+}
+
+#index {
+  .ivu-menu-vertical .ivu-menu-item, .ivu-menu-vertical .ivu-menu-submenu-title{
+    padding: 0;
+  }
+  .menu{
+    li{
+      a{
+        color: inherit;
+        display: block;
+        padding: 14px 24px;
+      }
+    } 
+  }
+}
+
+.ivu-menu-light.ivu-menu-horizontal .ivu-menu-item-active, .ivu-menu-light.ivu-menu-horizontal .ivu-menu-submenu-active, .ivu-menu-light.ivu-menu-horizontal .ivu-menu-item:hover, .ivu-menu-light.ivu-menu-horizontal .ivu-menu-submenu:hover
+{
+  border-bottom:3px solid #000;
+}
+.ivu-menu-horizontal.ivu-menu-light:after {
+  background:rgba(255, 255, 255, 0);
+}
+.ivu-menu-horizontal .ivu-menu-item, .ivu-menu-horizontal .ivu-menu-submenu {
+  padding:0;
+}
+
+.ivu-spin-fix {
+  background-color: hsla(0,0%,100%,.9);
+}
