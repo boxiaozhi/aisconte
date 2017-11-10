@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Http\Request;
 use Symfony\Component\DomCrawler;
 use App\Tools\Common;
+use QL\QueryList;
 
 class WizNoteController extends Controller
 {
@@ -115,7 +116,7 @@ class WizNoteController extends Controller
         $temp = [];
         foreach ($data as $d) {
             $temp[] = [
-                        'to'   => "/wiz/".$d['id'],
+                        'to'   => "/wiznote/".$d['id'],
                         'name' => "{$d['id']}",
                         'type' => '',
                         'des'  => $d['title']
@@ -141,9 +142,15 @@ class WizNoteController extends Controller
         $url = str_replace('/s/', '/api/shares/', $data->url);
         $res = Common::cUrl($url);
         $res = self::contentFormat($res);
+
         if(strpos($res['title'], '.md')){
             $res['md']      = true;
-            $res['content'] = self::htmlToMd($res['content']);
+            //$res['content'] = self::htmlToMd($res['content']);
+            $res['content'] = self::qlDeal($res['content']);
+            //print_r($res['content']);exit;
+            $Parsedown = new \Parsedown();
+            $res['content'] = $Parsedown->text($res['content']);
+            //exit();
         } else {
             $res['md']      = false;
             $res['content'] = self::commonToHtml($res['content']);
@@ -192,5 +199,24 @@ class WizNoteController extends Controller
         $crawler->addHtmlContent($data);
         $htmlContent = $crawler->filter('body')->html();
         return $htmlContent;
-    }    
+    }
+
+    /**
+     * QueryList Deal Html Page
+     * @param  [type] $data [description]
+     * @param  [type] $type [description]
+     * @return [type]       [description]
+     */
+    public function qlDeal($data, $type='html'){
+        //$data = str_replace('charset=unicode', 'charset=utf-8', $data);
+        $rules = [
+            'body' => ['', 'text', '', function($content){
+                $content = trim($content);
+                return $content;
+            }]
+        ];
+        $data = QueryList::html($data)->removeHead()->rules($rules)->range('body')->query()->getData();
+        $res = $data->all();
+        return $res[0]['body'];
+    }
 }

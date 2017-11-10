@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 //前台
 Route::get('/', function () {
     return view('index');
