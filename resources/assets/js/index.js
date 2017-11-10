@@ -6,32 +6,46 @@
  */
 
 require('./bootstrap');
-window.showdown = require('showdown');
+
 window.Vue = require('vue');
 
 import iview from 'iview'
 import router from '@/router/index'
 import axios from 'axios'
-import '!style-loader!css-loader!less-loader!@/theme/index.less'
+import vuex from 'vuex'
+
+import hljs from 'highlight.js'
+import 'highlight.js/styles/solarized-dark.css'
+import particlesJS from 'particles.js'
 
 import index from '@/components/Index'
 import globalPlugins from '@/components/GlobalPlugins'
+import '!style-loader!css-loader!less-loader!@/theme/index.less'
 
 Vue.use(iview, axios)
+Vue.use(vuex)
+Vue.use(particlesJS)
 Vue.use(globalPlugins)
 
 const indexVue = new Vue({
     el: '#index',
-	router,
-	template: '<index/>',
-	components: { index }
+    template: '<index/>',
+    components: { index },
+    router
+})
+
+Vue.directive('highlight', function (el) {
+    let blocks = el.querySelectorAll('pre code');
+    blocks.forEach((block)=>{
+        hljs.highlightBlock(block)
+    })
 })
 
 router.beforeEach((to, from, next) => {
-  iview.LoadingBar.start();
-  next();
+    iview.LoadingBar.start();
+    next();
 })
 
 router.afterEach(route => {
-  iview.LoadingBar.finish();
+    iview.LoadingBar.finish();
 })
