@@ -108,56 +108,47 @@ class WizNoteController extends Controller
     }
 
     /**
-     * [navList description]
+     * 获取标题导航数据
      * @return [type] [description]
      */
-    public function navList(){
+    public function navList() {
         $data = WizNote::select('id','title')->orderBy('id', 'desc')->get();
         $temp = [];
         foreach ($data as $d) {
             $temp[] = [
-                        'to'   => "/wiznote/".$d['id'],
+                        'to'   => "/note/".$d['id'],
                         'name' => "{$d['id']}",
                         'type' => '',
                         'des'  => $d['title']
                     ];
         }
         $res['default'] = (string)$data[0]['id'];
-        $res['data'] = $temp;
+        $res['data']    = $temp;
         return response()->json($res);
     }
 
     /**
-     * [getNote description]
+     * 获取笔记内容
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function getNote(Request $request){
-        $id = $request->id;
-        if(empty($id)){
-            $data = WizNote::orderBy('id', 'desc')->first();
-        } else {
-            $data = WizNote::Where('id', $id)->first();
-        }
-        $url = str_replace('/s/', '/api/shares/', $data->url);
-        $res = Common::cUrl($url);
-        $res = self::contentFormat($res);
+    public function getNote(Request $request) {
+        $id       = $request->id;
+        $noteInfo = empty($id) ? WizNote::orderBy('id', 'desc')->first() : WizNote::Where('id', $id)->first();
+        $url      = str_replace('/s/', '/api/shares/', $noteInfo->url);
+        $res      = Common::cUrl($url);
+        $res      = self::contentFormat($res);
 
-        if(strpos($res['title'], '.md')){
-            $res['md']      = true;
-            //$res['content'] = self::htmlToMd($res['content']);
-            $res['content'] = self::qlDeal($res['content']);
-            //print_r($res['content']);exit;
-            $Parsedown = new \Parsedown();
-            $res['content'] = $Parsedown->text($res['content']);
-            //exit();
-        } else {
-            $res['md']      = false;
-            $res['content'] = self::commonToHtml($res['content']);
-        }
+        $res['format']  = strpos($res['title'], '.md') ? 'md' : 'common';
+        $res['content'] = self::contentDeal($res['content'], $res['format']);
         return response()->json($res);
     }
 
+    /**
+     * 数据格式整理
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
     public function contentFormat($data)
     {
         $res['returnCode']    = $data['return_code'];
@@ -171,52 +162,38 @@ class WizNoteController extends Controller
     }
 
     /**
-     * html 提取 md 信息
-     * @param  [type] $data [description]
-     * @return [type]       [description]
+     * 笔记内容处理
+     * @param  [type] $data   [description]
+     * @param  string $format [description]
+     * @return [type]         [description]
      */
-    public function htmlToMd($data)
-    {
-        $data = str_replace('charset=unicode', 'charset=utf-8', $data); //指定字符编码
-        $crawler = new DomCrawler\Crawler();
-        $crawler->addHtmlContent($data);
-        $nodeValues = $crawler->filter('div > div')->each(function (DomCrawler\Crawler $node, $i) {
-            return $node->text();
-        });
-        if(empty($nodeValues)){
-            $nodeValues = $crawler->filter('div')->each(function (DomCrawler\Crawler $node, $i) {
-                return $node->text();
-            });
+    public function contentDeal($data, $format='common') {
+        switch ($format) { //提取规则
+            case 'md':
+                $rules = [
+                    'body' => ['', 'text', '', function($content){
+                        $content = trim($content);
+                        return $content;
+                    }]
+                ];
+                break;
+            default:
+                $rules = [
+                    'body' => ['', 'html', '']
+                ];
+                break;
         }
-        $text = implode(PHP_EOL, $nodeValues); //换行
-        return $text;
-    }
 
-    public function commonToHtml($data)
-    {
-        $data = str_replace('charset=unicode', 'charset=utf-8', $data); //指定字符编码
-        $crawler = new DomCrawler\Crawler();
-        $crawler->addHtmlContent($data);
-        $htmlContent = $crawler->filter('body')->html();
-        return $htmlContent;
-    }
-
-    /**
-     * QueryList Deal Html Page
-     * @param  [type] $data [description]
-     * @param  [type] $type [description]
-     * @return [type]       [description]
-     */
-    public function qlDeal($data, $type='html'){
-        //$data = str_replace('charset=unicode', 'charset=utf-8', $data);
-        $rules = [
-            'body' => ['', 'text', '', function($content){
-                $content = trim($content);
-                return $content;
-            }]
-        ];
         $data = QueryList::html($data)->removeHead()->rules($rules)->range('body')->query()->getData();
-        $res = $data->all();
-        return $res[0]['body'];
+        $res  = $data->all();
+        $res  = $res[0]['body'];
+
+        switch ($format) { //转换规则
+            case 'md':
+                $Parsedown = new \Parsedown();
+                $res       = $Parsedown->text($res);
+                break;
+        }
+        return $res;
     }
 }
