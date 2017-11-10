@@ -14,7 +14,7 @@ let mix = require('laravel-mix');
 //自定义配置
 mix.webpackConfig({
 	resolve: {
-		extensions: ['.js', '.vue', '.json'],
+		extensions: ['.js', '.vue'],
 		alias: {
 		  	'@': path.resolve(__dirname, "resources/assets/js"),
 		}
@@ -24,18 +24,22 @@ mix.webpackConfig({
 		  {
 		    test: /\.less$/,
 		    use: [{
-		        loader: "style-loader" // creates style nodes from JS strings 
+		        loader: "style-loader"
 		    }, {
-		        loader: "css-loader" // translates CSS into CommonJS 
+		        loader: "css-loader"
 		    }, {
-		        loader: "less-loader" // compiles Less to CSS 
+		        loader: "less-loader"
 		    }]
+		  },
+		  {
+		  	test: /\.json$/,
+		  	use: [{
+		  		loader: "json-loader"
+		  	}]
 		  }
 		]
-	}	
+	}
 });
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .js('resources/assets/js/index.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css')
+mix.js('resources/assets/js/index.js', 'public/js')
    .browserSync('isconteadmin.local');
