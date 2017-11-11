@@ -17,7 +17,7 @@ Route::middleware('auth:api')->namespace('Http\Controllers')->get('/user', funct
     return $request->user();
 });
 
-Route::group(['namespace'=>'Admin\Controllers'],function(){
-	Route::get('wizNotes/actions/navList', 'WizNoteController@navList');
-	Route::get('wizNotes/actions/note/{id}', 'WizNoteController@getNote');
+Route::group(['namespace' => 'Admin\Controllers'], function() {
+	Route::get('notes/actions/navList', 'NoteController@navList');
+	Route::get('notes/actions/note/{id}', 'NoteController@getNote');
 });
