@@ -83,9 +83,9 @@
     </div>
 </template>
 <script>
-import TagNav from '@/components/wiznote/TagNav'
-import TitleNav from '@/components/wiznote/TitleNav'
-import Note from '@/components/wiznote/Note'
+import TagNav from '@/components/note/TagNav'
+import TitleNav from '@/components/note/TitleNav'
+import Note from '@/components/note/Note'
 export default {
     components: {
         TagNav,

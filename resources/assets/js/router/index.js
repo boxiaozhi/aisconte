@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import HomePage from '@/components/homePage/Index'
-import Wiznote from '@/components/wiznote/Index'
+import Note from '@/components/note/Index'
 
 Vue.use(Router)
 
@@ -15,11 +15,11 @@ export default new Router({
     },
     {
       path: '/note',
-      component: Wiznote
+      component: Note
     },
     {
       path: '/note/:id',
-      component: Wiznote
+      component: Note
     }
   ]
 })

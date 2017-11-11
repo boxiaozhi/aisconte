@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\WizNote;
+use App\Models\Note;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -18,7 +18,7 @@ use Symfony\Component\DomCrawler;
 use App\Tools\Common;
 use QL\QueryList;
 
-class WizNoteController extends Controller
+class NoteController extends Controller
 {
     use ModelForm;
 
@@ -78,7 +78,7 @@ class WizNoteController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(WizNote::class, function (Grid $grid) {
+        return Admin::grid(Note::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
             $grid->column('title', '标题');
@@ -96,7 +96,7 @@ class WizNoteController extends Controller
      */
     protected function form()
     {
-        return Admin::form(WizNote::class, function (Form $form) {
+        return Admin::form(Note::class, function (Form $form) {
 
             $form->display('id', 'ID');
             $form->text('title', '标题');
@@ -112,7 +112,7 @@ class WizNoteController extends Controller
      * @return [type] [description]
      */
     public function navList() {
-        $data = WizNote::select('id','title')->orderBy('id', 'desc')->get();
+        $data = Note::select('id','title')->orderBy('id', 'desc')->get();
         $temp = [];
         foreach ($data as $d) {
             $temp[] = [
@@ -134,7 +134,7 @@ class WizNoteController extends Controller
      */
     public function getNote(Request $request) {
         $id       = $request->id;
-        $noteInfo = empty($id) ? WizNote::orderBy('id', 'desc')->first() : WizNote::Where('id', $id)->first();
+        $noteInfo = empty($id) ? Note::orderBy('id', 'desc')->first() : Note::Where('id', $id)->first();
         $url      = str_replace('/s/', '/api/shares/', $noteInfo->url);
         $res      = Common::cUrl($url);
         $res      = self::contentFormat($res);

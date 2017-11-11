@@ -46,7 +46,7 @@ export default {
     methods: {
         dataList: function (data) {
             this.loading = true
-            axios.get(this.globalUrl() + '/api/wizNotes/actions/note/' + this.getRouteId())
+            axios.get(this.globalUrl() + '/api/notes/actions/note/' + this.getRouteId())
             .then((response) => {
                 this.conHtml = response.data.content
                 this.loading = false
