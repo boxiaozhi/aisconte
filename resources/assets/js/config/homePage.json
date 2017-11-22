@@ -1,0 +1,19 @@
+{
+    "logo": "images/logo-60x60.png",
+    "navs":[
+        {
+            "href": "/",
+            "iconType": "ios-home-outline",
+            "title": "Home"
+        },
+        {
+            "href": "/note",
+            "iconType": "ios-albums-outline",
+            "title": "Note"
+        }
+    ],
+    "hitokoto":{
+        "url": "http://api.hitokoto.cn/",
+        "parameter": "?c=b&encode=json"
+    }
+}

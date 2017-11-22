@@ -4,12 +4,17 @@
         top: 40%;
         left: 50%;
         width: 100%;
-        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
         .ivu-breadcrumb > span {
             font-weight: 400;
         }
         .ivu-icon {
             margin-right: 0.4em;
+        }
+        .ivu-avatar-large {
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
         }
     }
     .c-bg-transparent {
@@ -18,7 +23,7 @@
         }
     }
     .c-center {
-        text-align: -webkit-center;
+        text-align: center;
     }
     .c-icon-group {
         padding: 1em 0 0 0;
@@ -40,18 +45,17 @@
         <div class="c-main">
             <Row class="c-bg-transparent" type="flex" justify="center" align="bottom">
                 <Col class="c-center" :xs="{span:24}" :lg="{span:18}">
-                    <Card :bordered="false">
+                    <Card dis-hover :bordered="false">
                         <div class="c-center">
-                            <img :src="logoImg" height="60" alt="logoImg">
-                            <h3>Conte can't stop.</h3>
+                            <Avatar :src="homePageJson.logo" size="large"/>
+                            <h3>{{ hitokoto.text }} - {{ hitokoto.from }}</h3>
                         </div>
                     </Card>
                 </Col>
                 <Col class="c-icon-group" :xs="{span:24}" :lg="{span:18}">
                     <div class="c-center">
                         <Breadcrumb separator="/">
-                            <BreadcrumbItem href="/"><Icon type="ios-home-outline"></Icon>Home</BreadcrumbItem>
-                            <BreadcrumbItem href="/note"><Icon type="ios-albums-outline"></Icon>Note</BreadcrumbItem>
+                            <BreadcrumbItem v-for="nav in homePageJson.navs" :href="nav.href"><Icon :type="nav.iconType"></Icon>{{ nav.title }}</BreadcrumbItem>
                         </Breadcrumb>
                     </div>
                 </Col>
@@ -62,15 +66,33 @@
 </template>
 
 <script>
-import particlesJson from '@/assets/particles.json'
+import particlesJson from '@/config/particles.json'
+import homePageJson from '@/config/homePage.json'
 export default {
     data () {
         return {
-            logoImg: require('@/assets/img/logo-60x60.png')
+            homePageJson,
+            hitokoto:{
+                text: "Conte can't stop",
+                from: "Conte"
+            }
         }
+    },
+    created() {
+        this.getHitokoto()
     },
     mounted() {
         particlesJS('particles', particlesJson);
+    },
+    methods: {
+        getHitokoto() {
+            axios.get('api/hitokoto')
+            .then((response) => {
+                this.hitokoto = response.data
+            })
+            .catch((error) => {
+            });            
+        }
     }
 }
 </script>

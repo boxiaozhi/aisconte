@@ -14,23 +14,12 @@ let mix = require('laravel-mix');
 //自定义配置
 mix.webpackConfig({
 	resolve: {
-		extensions: ['.js', '.vue'],
 		alias: {
 		  	'@': path.resolve(__dirname, "resources/assets/js"),
 		}
 	},
 	module: {
 		rules: [
-		  {
-		    test: /\.less$/,
-		    use: [{
-		        loader: "style-loader"
-		    }, {
-		        loader: "css-loader"
-		    }, {
-		        loader: "less-loader"
-		    }]
-		  },
 		  {
 		  	test: /\.json$/,
 		  	use: [{
