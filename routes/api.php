@@ -24,4 +24,5 @@ Route::group(['namespace' => 'Admin\Controllers'], function() {
 });
 Route::group(['namespace' => 'Http\Controllers'], function() {
 	Route::get('/hitokoto', 'HitokotoController@getInfo');
+	Route::get('/wizNoteLogin', 'LoginController@wizNoteLogin');
 });
