@@ -12,10 +12,17 @@ class HitokotoController extends Controller
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function getInfo(Request $request) {
+    public function getInfo(Request $request)
+    {
         $url       = 'http://api.hitokoto.cn/?c=b&encode=json';
         $res      = Common::cUrl($url);
         $res['text'] = $res['hitokoto'];
         return response()->json($res);
+    }
+
+    public function testGuzzle()
+    {
+        $guzzle = new Guzzle();
+        $guzzle->request($config, $data);
     }
 }
