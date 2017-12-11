@@ -65,9 +65,6 @@
                 <div class="menu-logo">
                     <img :src="logoImg" height="60" alt="logoImg">
                 </div>
-                <div class="menu-nav">
-                    <TagNav></TagNav>
-                </div>
             </div>
         </div>
         <div class="layout-content">
