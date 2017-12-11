@@ -23,7 +23,7 @@ class WizNoteController extends Controller
         ];
         $this->client = new Guzzle(array_merge($defaultConfig, $config));
         $this->redis = app('redis');
-        if($this->shares()['return_code'] == 301){ //检测token是否失效
+        if($this->shares()['return_code'] != 200){ //检测token是否失效
             $this->login($userId, $password);
         }
     }
