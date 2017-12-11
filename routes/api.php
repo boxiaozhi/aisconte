@@ -17,12 +17,13 @@ Route::middleware('auth:api')->namespace('Http\Controllers')->get('/user', funct
     return $request->user();
 });
 
-
 Route::group(['namespace' => 'Admin\Controllers'], function() {
-	Route::get('notes/actions/navList', 'NoteController@navList');
-	Route::get('notes/actions/note/{id}', 'NoteController@getNote');
 });
+
 Route::group(['namespace' => 'Http\Controllers'], function() {
+    //一言
 	Route::get('/hitokoto', 'HitokotoController@getInfo');
-	Route::get('/wizNoteLogin', 'LoginController@wizNoteLogin');
+	//note模块
+    Route::get('notes/actions/navList', 'NoteController@navList');
+    Route::get('notes/actions/note/{id}', 'NoteController@getNote');
 });
