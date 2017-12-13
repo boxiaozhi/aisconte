@@ -11,9 +11,5 @@
             "iconType": "ios-albums-outline",
             "title": "Note"
         }
-    ],
-    "hitokoto":{
-        "url": "http://api.hitokoto.cn/",
-        "parameter": "?c=b&encode=json"
-    }
+    ]
 }

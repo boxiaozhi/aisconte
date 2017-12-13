@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import HomePage from '@/components/homePage/Index'
+import Home from '@/components/home/Index'
 import Note from '@/components/note/Index'
 
 Vue.use(Router)
@@ -11,7 +11,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: HomePage
+      component: Home
     },
     {
       path: '/note',

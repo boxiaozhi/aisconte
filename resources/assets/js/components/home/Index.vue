@@ -47,7 +47,7 @@
                 <Col class="c-center" :xs="{span:24}" :lg="{span:18}">
                     <Card dis-hover :bordered="false">
                         <div class="c-center">
-                            <Avatar :src="homePageJson.logo" size="large"/>
+                            <Avatar :src="homeJson.logo" size="large"/>
                             <h3>{{ hitokoto.text }} - {{ hitokoto.from }}</h3>
                         </div>
                     </Card>
@@ -55,7 +55,7 @@
                 <Col class="c-icon-group" :xs="{span:24}" :lg="{span:18}">
                     <div class="c-center">
                         <Breadcrumb separator="/">
-                            <BreadcrumbItem v-for="nav in homePageJson.navs" :href="nav.href"><Icon :type="nav.iconType"></Icon>{{ nav.title }}</BreadcrumbItem>
+                            <BreadcrumbItem v-for="nav in homeJson.navs" :href="nav.href"><Icon :type="nav.iconType"></Icon>{{ nav.title }}</BreadcrumbItem>
                         </Breadcrumb>
                     </div>
                 </Col>
@@ -67,11 +67,11 @@
 
 <script>
 import particlesJson from '@/config/particles.json'
-import homePageJson from '@/config/homePage.json'
+import homeJson from '@/config/home.json'
 export default {
     data () {
         return {
-            homePageJson,
+            homeJson,
             hitokoto:{
                 text: "Conte can't stop",
                 from: "Conte"
@@ -91,7 +91,7 @@ export default {
                 this.hitokoto = response.data
             })
             .catch((error) => {
-            });            
+            });
         }
     }
 }
