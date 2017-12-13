@@ -12,18 +12,13 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware('auth:api')->namespace('Http\Controllers')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::group(['namespace' => 'Admin\Controllers'], function() {
 });
 
 Route::group(['namespace' => 'Http\Controllers'], function() {
-    //一言
-	Route::get('/hitokoto', 'HitokotoController@getInfo');
-	//note模块
-    Route::get('notes/actions/navList', 'NoteController@navList');
-    Route::get('notes/actions/note/{id}', 'NoteController@getNote');
+    //hitokoto
+	Route::get('hitokoto', 'HomeController@hitokoto');
+	//note
+    Route::get('note/nav', 'NoteController@nav')->name('note.nav');
+    Route::get('note/{id}', 'NoteController@detail')->name('note.detail');
 });

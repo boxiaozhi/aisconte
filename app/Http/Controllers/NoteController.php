@@ -4,26 +4,37 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use QL\QueryList;
+use App\Services\WizService;
 
 class NoteController extends Controller
 {
+    private $wiz;
+
+    public function __construct()
+    {
+        $userId = 'boxiaozhi.bolu@gmail.com';
+        $password = '***REMOVED***';
+        $this->wiz = new WizService($userId, $password);
+    }
+
     /**
      * 标题导航
      * @return \Illuminate\Http\JsonResponse
      */
-    public function navList() {
-        $wiznote = new WizNoteController();
-        $shares =  $wiznote->shares();
-        $data = [];
+    public function nav() {
+        $shares = $this->wiz->shares();
+        $data   = [];
         foreach($shares['content'] as $share){
             $data[] = [
-                'to' => '/note/'.$share['documentGuid'],
+                'to'   => '/note/' . $share['documentGuid'],
                 'name' => $share['documentGuid'],
                 'type' => '',
-                'des' => $share['title']
+                'des'  => $share['title']
             ];
         }
-        return response()->json(['default' => $shares['content'][0]['documentGuid'], 'data' => $data]);
+        $default = $shares['content'][0]['documentGuid']; //默认笔记
+        $res = ['default' => $default, 'data' => $data];
+        return response()->json($res);
     }
 
     /**
@@ -31,26 +42,24 @@ class NoteController extends Controller
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function getNote(Request $request) {
-        $id       = $request->id;
-        $wizNote = new WizNoteController();
+    public function detail($id) {
         if(!$id){
-            $shares =  $wizNote->shares();
-            $id = $shares['content'][0]['documentGuid'];
+            $shares = $this->wiz->shares();
+            $id = $shares['content'][0]['documentGuid']; //默认笔记
         }
-        $shareInfo = $wizNote->shareInfoByDocumentGuid($id);
-        $res = $wizNote->noteDetail($shareInfo);
-        $res   = self::contentFormat($res);
+        $shareInfo = $this->wiz->shareInfoByDocumentGuid($id); //根据 Guid 获取分享信息
+        $res = $this->wiz->noteDetail($shareInfo); //根据分享信息获取分享具体内容
+        $res = $this->contentFormat($res); //格式化
 
         $res['format']  = strpos($res['title'], '.') ? 'md' : 'common';
-        $res['content'] = self::contentDeal($res['content'], $res['format']);
+        $res['content'] = self::contentDeal($res['content'], $res['format']); //Markdown 文章处理
         return response()->json($res);
     }
 
     /**
-     * 数据格式整理
-     * @param  [type] $data [description]
-     * @return [type]       [description]
+     * 数据格式处理
+     * @param $data
+     * @return mixed
      */
     public function contentFormat($data)
     {
@@ -86,15 +95,15 @@ class NoteController extends Controller
                 ];
                 break;
         }
-
-        $data = QueryList::html($data)->removeHead()->rules($rules)->range('body')->query()->getData();
-        $res  = $data->all();
-        $res  = $res[0]['body'];
+        $queryList = new QueryList();
+        $data = $queryList->html($data)->removeHead()->rules($rules)->range('body')->query()->getData();
+        $res = $data->all();
+        $res = $res[0]['body'];
 
         switch ($format) { //转换规则
             case 'md':
-                $Parsedown = new \Parsedown();
-                $res       = $Parsedown->text($res);
+                $Parsedown = new \Parsedown(); //Markdown 转换
+                $res = $Parsedown->text($res);
                 break;
         }
         return $res;

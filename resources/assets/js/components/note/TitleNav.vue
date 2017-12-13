@@ -20,7 +20,7 @@ export default {
     },
     methods: {
         navList: function (data) {
-            axios.get(this.globalUrl() + '/api/notes/actions/navList')
+            axios.get(this.globalUrl() + '/api/note/nav')
             .then((response) => {
                 this.data   = response.data.data
                 this.active = this.$route.params.id ? this.$route.params.id.toString() : response.data.default
