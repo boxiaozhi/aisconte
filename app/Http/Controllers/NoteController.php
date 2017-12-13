@@ -12,8 +12,8 @@ class NoteController extends Controller
 
     public function __construct()
     {
-        $userId = 'boxiaozhi.bolu@gmail.com';
-        $password = '111zzq6534A';
+        $userId = env('WIZ_USERID');
+        $password = env('WIZ_PASSWORD');
         $this->wiz = new WizService($userId, $password);
     }
 
