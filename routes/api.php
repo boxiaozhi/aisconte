@@ -21,4 +21,6 @@ Route::group(['namespace' => 'Http\Controllers'], function() {
 	//note
     Route::get('note/nav', 'NoteController@nav')->name('note.nav');
     Route::get('note/{id}', 'NoteController@detail')->name('note.detail');
+    //system info
+    Route::get('systems', 'SystemInfoController@base')->name('systems.base');
 });
