@@ -111,96 +111,68 @@ class WizService
         return json_decode($user, true);
     }
 
-//    /**
-//     * 分享列表
-//     * @param int $page
-//     * @param int $size
-//     * @return mixed|\Psr\Http\Message\StreamInterface
-//     */
-//    public function shares($page=0, $size=50)
-//    {
-//        $loginInfo = $this->user();
-//
-//        $method = 'GET';
-//        $uri    = '/share/api/shares';
-//        $param  = [
-//            'query' => [
-//                'token'   => $loginInfo['token'],
-//                'kb_guid' => $loginInfo['kbGuid'],
-//                'page'    => $page,
-//                'size'    => $size
-//            ]
-//        ];
-//        $response = $this->client->request($method, $uri, $param);
-//        $shares = $response->getBody();
-//        return json_decode($shares, true);
-//    }
-//
-//    /**
-//     * 全部标签信息
-//     * @return mixed
-//     */
-//    public function tags()
-//    {
-//        $loginInfo = $this->login();
-//
-//        $method = 'GET';
-//        $uri    = '/ks/tag/all/' . $loginInfo['kbGuid'];
-//        $param  = [
-//            'query' => [
-//                'token' => $loginInfo['token']
-//            ]
-//        ];
-//        $response = $this->client->request($method, $uri, $param);
-//        $tags = $response->getBody();
-//        $tags = json_decode($tags, true);
-//        return $tags['result'];
-//    }
-//
-//    /**
-//     * 根据 documentGuid 获取分享信息
-//     * @param $documentGuid
-//     * @return mixed
-//     */
-//    public function shareInfoByDocumentGuid($documentGuid){
-//        $loginInfo = $this->user();
-//
-//        $method = 'GET';
-//        $uri    = '/share/api/shares';
-//        $param  = [
-//            'query' => [
-//                'token'         => $loginInfo['token'],
-//                'kb_guid'       => $loginInfo['kbGuid'],
-//                'document_guid' => $documentGuid
-//            ]
-//        ];
-//        $response = $this->client->request($method, $uri, $param);
-//        $shareInfo = $response->getBody();
-//        return json_decode($shareInfo, true);
-//    }
-//
-//    /**
-//     * 笔记详情
-//     * @param $note
-//     * @return mixed|\Psr\Http\Message\StreamInterface
-//     */
-//    public function noteDetail($note)
-//    {
-//        $loginInfo = $this->user();
-//
-//        $urlArr   = parse_url($note['shareUrl']);
-//        $base_uri = $urlArr['scheme'] . '://' . $urlArr['host'];
-//        $client   = new Client(['base_uri' => $base_uri]);
-//
-//        $method = 'GET';
-//        $uri    = str_replace('/s/', '/api/shares/', $urlArr['path']);
-//        $param  = [
-//            'query' => [
-//                'token' => $loginInfo['token']
-//            ]
-//        ];
-//        $response = $client->request($method, $uri, $param);
-//        $noteDetail = $response->getBody();
-//        return json_decode($noteDetail, true);
-//    }
+    /**
+     * 分享列表
+     * @param int $page
+     * @param int $size
+     * @return mixed|\Psr\Http\Message\StreamInterface
+     */
+    public function shares($page=0, $size=50)
+    {
+        $loginInfo = $this->user();
+
+        $method = 'GET';
+        $uri    = '/share/api/shares';
+        $param  = [
+            'query' => [
+                'token'   => $loginInfo['token'],
+                'kb_guid' => $loginInfo['kbGuid'],
+                'page'    => $page,
+                'size'    => $size
+            ]
+        ];
+        $response = $this->client->request($method, $uri, $param);
+        return json_decode($response->getBody(), true);
+    }
+
+    /**
+     * 根据 docGuid 获取笔记详情
+     * @param $docGuid
+     * @return mixed
+     */
+    public function noteDetail($docGuid)
+    {
+        $loginInfo = $this->user();
+
+        $method = 'GET';
+        $uri    = '/ks/note/download/'.$loginInfo['kbGuid'].'/'.$docGuid;
+        $param  = [
+            'query' => [
+                'token'        => $loginInfo['token'],
+                'downloadInfo' => 1, //笔记简介
+                'downloadData' => 1, //笔记详情
+            ]
+        ];
+        $response = $this->client->request($method, $uri, $param);
+        return json_decode($response->getBody(), true);
+    }
+
+    /**
+     * 全部标签信息
+     * @return mixed
+     */
+    public function tags()
+    {
+        $loginInfo = $this->user();
+
+        $method = 'GET';
+        $uri    = '/ks/tag/all/'.$loginInfo['kbGuid'];
+        $param  = [
+            'query' => [
+                'token' => $loginInfo['token']
+            ]
+        ];
+        $response = $this->client->request($method, $uri, $param);
+        return json_decode($response->getBody(), true);
+    }
 }
