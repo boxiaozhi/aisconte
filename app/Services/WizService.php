@@ -5,6 +5,7 @@
  */
 namespace App\Services;
 
+<<<<<<< HEAD
 use GuzzleHttp\Client;
 
 class WizService
@@ -24,6 +25,75 @@ class WizService
         if($this->shares()['return_code'] != 200){ //检测token是否失效
             $this->login($userId, $password);
         }
+=======
+use GuzzleHttp\Client as GuzzleClient;
+use Illuminate\Support\Facades\Cache;
+
+class WizService
+{
+    private $client = null;
+    private $prefix = '';
+    private $token = '';
+    private $userKey = '';
+
+    const CLIENT_OPTIONS = [
+        'clientType'    => 'web',
+        'clientVersion' => '3.0.0',
+        'apiVersion'    => '10',
+    ];
+
+    public function __construct()
+    {
+        $userId   = config('wiz.user_id');
+        $password = config('wiz.password');
+
+        $this->prefix = config('wiz.cache_prefix');
+        $this->userKey = $this->prefix.'user';
+
+        $this->client = new GuzzleClient(['base_uri' => config('wiz.base_uri')]);
+
+        $this->loginCheck($userId, $password);
+    }
+
+    /**
+     * 登录校验，无效则登录
+     * @param $userId
+     * @param $password
+     * @return bool
+     */
+    private function loginCheck($userId, $password)
+    {
+        $user = Cache::get($this->userKey, '');
+        $user = (array)json_decode($user, true);
+        if($user){
+            $keepRes = $this->loginKeep($user['token']);
+            if($keepRes){
+                $this->token = $user['token'];
+                return true;
+            }
+        }
+        $this->login($userId, $password);
+    }
+
+    /**
+     * 保持登录状态
+     * @param $token
+     * @return bool
+     */
+    private function loginKeep($token)
+    {
+        $method = 'GET';
+        $uri    = 'as/user/keep';
+        $query  = [
+            'token' => $token,
+        ];
+        $param = [
+            'query' => $query + self::CLIENT_OPTIONS
+        ];
+        $response = $this->client->request($method, $uri, $param);
+        $res = json_decode($response->getBody(), true);
+        return $res['returnCode'] == 200 ? true : false;
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
     }
 
     /**
@@ -43,20 +113,38 @@ class WizService
             ]
         ];
         $response = $this->client->request($method, $uri, $param);
+<<<<<<< HEAD
         $loginInfo = $response->getBody();
         $loginInfo = json_decode($loginInfo, true);
         $this->redis->set(self::WIZ_LOGIN, json_encode($loginInfo['result']));
         return $loginInfo['result'];
+=======
+        $response = json_decode($response->getBody(), true);
+
+        if (Cache::has($this->userKey)) {
+            Cache::forget($this->userKey);
+        }
+        Cache::forever($this->userKey, json_encode($response['result']));
+        $this->token = $response['result']['token'];
+        return $response['result'];
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
     }
 
     /**
      * 获取登录信息
      * @return mixed
      */
+<<<<<<< HEAD
     public function getLoginInfo()
     {
         $loginInfo = $this->redis->get(self::WIZ_LOGIN);
         return json_decode($loginInfo, true);
+=======
+    public function user()
+    {
+        $user = Cache::get($this->userKey, '');
+        return json_decode($user, true);
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
     }
 
     /**
@@ -67,7 +155,11 @@ class WizService
      */
     public function shares($page=0, $size=50)
     {
+<<<<<<< HEAD
         $loginInfo = $this->getLoginInfo();
+=======
+        $loginInfo = $this->user();
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
 
         $method = 'GET';
         $uri    = '/share/api/shares';
@@ -80,6 +172,7 @@ class WizService
             ]
         ];
         $response = $this->client->request($method, $uri, $param);
+<<<<<<< HEAD
         $shares = $response->getBody();
         return json_decode($shares, true);
     }
@@ -142,13 +235,55 @@ class WizService
 
         $method = 'GET';
         $uri    = str_replace('/s/', '/api/shares/', $urlArr['path']);
+=======
+        return json_decode($response->getBody(), true);
+    }
+
+    /**
+     * 根据 docGuid 获取笔记详情
+     * @param $docGuid
+     * @return mixed
+     */
+    public function noteDetail($docGuid)
+    {
+        $loginInfo = $this->user();
+
+        $method = 'GET';
+        $uri    = '/ks/note/download/'.$loginInfo['kbGuid'].'/'.$docGuid;
+        $param  = [
+            'query' => [
+                'token'        => $loginInfo['token'],
+                'downloadInfo' => 1, //笔记简介
+                'downloadData' => 1, //笔记详情
+            ]
+        ];
+        $response = $this->client->request($method, $uri, $param);
+        return json_decode($response->getBody(), true);
+    }
+
+    /**
+     * 全部标签信息
+     * @return mixed
+     */
+    public function tags()
+    {
+        $loginInfo = $this->user();
+
+        $method = 'GET';
+        $uri    = '/ks/tag/all/'.$loginInfo['kbGuid'];
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
         $param  = [
             'query' => [
                 'token' => $loginInfo['token']
             ]
         ];
+<<<<<<< HEAD
         $response = $client->request($method, $uri, $param);
         $noteDetail = $response->getBody();
         return json_decode($noteDetail, true);
+=======
+        $response = $this->client->request($method, $uri, $param);
+        return json_decode($response->getBody(), true);
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
     }
 }

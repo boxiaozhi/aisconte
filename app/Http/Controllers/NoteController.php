@@ -12,9 +12,18 @@ class NoteController extends Controller
 
     public function __construct()
     {
+<<<<<<< HEAD
         $userId = env('WIZ_USERID');
         $password = env('WIZ_PASSWORD');
         $this->wiz = new WizService($userId, $password);
+=======
+        $this->wiz = new WizService();
+    }
+
+    public function testInterface()
+    {
+        return $this->wiz->tags();
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
     }
 
     /**
@@ -47,11 +56,18 @@ class NoteController extends Controller
             $shares = $this->wiz->shares();
             $id = $shares['content'][0]['documentGuid']; //默认笔记
         }
+<<<<<<< HEAD
         $shareInfo = $this->wiz->shareInfoByDocumentGuid($id); //根据 Guid 获取分享信息
         $res = $this->wiz->noteDetail($shareInfo); //根据分享信息获取分享具体内容
         $res = $this->contentFormat($res); //格式化
 
         $res['format']  = strpos($res['title'], '.') ? 'md' : 'common';
+=======
+        $res = $this->wiz->noteDetail($id); //根据分享信息获取分享具体内容
+        $res = $this->contentFormat($res); //格式化
+
+        $res['format']  = 'common';
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
         $res['content'] = self::contentDeal($res['content'], $res['format']); //Markdown 文章处理
         return response()->json($res);
     }
@@ -63,6 +79,7 @@ class NoteController extends Controller
      */
     public function contentFormat($data)
     {
+<<<<<<< HEAD
         $res['returnCode']    = $data['return_code'];
         $res['returnMessage'] = $data['return_message'];
         $res['title']         = $data['share']['title'];
@@ -70,6 +87,11 @@ class NoteController extends Controller
         $res['readCount']     = $data['share']['readCount'];
         $res['createdAt']     = $data['share']['createdAt'];
         $res['updatedAt']     = $data['share']['updatedAt'];
+=======
+        $res['returnCode']    = $data['returnCode'];
+        $res['returnMessage'] = $data['returnMessage'];
+        $res['content']       = $data['html'];
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
         return $res;
     }
 

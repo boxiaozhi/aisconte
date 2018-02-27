@@ -43,23 +43,31 @@
 <template>
     <div>
         <div class="c-main">
-            <Row class="c-bg-transparent" type="flex" justify="center" align="bottom">
-                <Col class="c-center" :xs="{span:24}" :lg="{span:18}">
+            <el-row class="c-bg-transparent" type="flex" justify="center" align="bottom">
+                <el-col class="c-center" :xs="{span:24}" :lg="{span:18}">
                     <Card dis-hover :bordered="false">
                         <div class="c-center">
                             <Avatar :src="homeJson.logo" size="large"/>
                             <h3>{{ hitokoto.text }} - {{ hitokoto.from }}</h3>
                         </div>
                     </Card>
-                </Col>
-                <Col class="c-icon-group" :xs="{span:24}" :lg="{span:18}">
+                </el-col>
+            </el-row>
+            <el-row class="c-bg-transparent" type="flex" justify="center" align="bottom">
+                <el-col class="c-icon-group" :xs="{span:24}" :lg="{span:18}">
                     <div class="c-center">
+<<<<<<< HEAD:resources/assets/js/components/home/Index.vue
                         <Breadcrumb separator="/">
                             <BreadcrumbItem v-for="nav in homeJson.navs" :href="nav.href"><Icon :type="nav.iconType"></Icon>{{ nav.title }}</BreadcrumbItem>
                         </Breadcrumb>
+=======
+                        <el-button-group size="mini">
+                            <el-button v-for="nav in homeJson.navs" :to="nav.href" @click="jump(nav.href)">{{ nav.title }}</el-button>
+                        </el-button-group>
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc:resources/assets/js/components/home/Index.vue
                     </div>
-                </Col>
-            </Row>
+                </el-col>
+            </el-row>
         </div>
         <div id="particles"></div>
     </div>
@@ -92,6 +100,12 @@ export default {
             })
             .catch((error) => {
             });
+<<<<<<< HEAD:resources/assets/js/components/home/Index.vue
+=======
+        },
+        jump(val){
+            this.$router.push(val);
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc:resources/assets/js/components/home/Index.vue
         }
     }
 }
