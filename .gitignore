@@ -3,6 +3,7 @@
 /public/storage
 /public/adminUploads
 /public/uploads
+/public/js/index.js
 /storage/*.key
 /vendor
 /.idea

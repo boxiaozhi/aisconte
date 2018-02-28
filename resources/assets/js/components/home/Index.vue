@@ -89,11 +89,11 @@ export default {
     methods: {
         getHitokoto() {
             axios.get('api/hitokoto')
-            .then((response) => {
-                this.hitokoto = response.data
-            })
-            .catch((error) => {
-            });
+                .then((response) => {
+                    this.hitokoto = response.data
+                })
+                .catch((error) => {
+                });
         },
         jump(val){
             this.$router.push(val);

@@ -1,7 +1,11 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
+<<<<<<< HEAD
+ * Generated for Laravel 5.5.18 on 2017-12-13.
+=======
  * Generated for Laravel 5.5.32 on 2018-02-12.
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -378,6 +382,8 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+<<<<<<< HEAD
+=======
          * Get the registered service provider instances if any exist.
          *
          * @param \Illuminate\Support\ServiceProvider|string $provider
@@ -390,6 +396,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
          * Resolve a service provider instance from the class name.
          *
          * @param string $provider
@@ -1885,7 +1892,11 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the session store used by the guard.
          *
+<<<<<<< HEAD
+         * @return \Illuminate\Contracts\Session\Session. 
+=======
          * @return \Illuminate\Contracts\Session\Session 
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
          * @static 
          */ 
         public static function getSession()
@@ -2182,6 +2193,8 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+<<<<<<< HEAD
+=======
          * Set the echo format to double encode entities.
          *
          * @return void 
@@ -2193,6 +2206,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
          * Get the path to the compiled version of a view.
          *
          * @param string $path
@@ -3251,7 +3265,11 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the cookies which have been queued for the next request.
          *
+<<<<<<< HEAD
+         * @return array 
+=======
          * @return \Symfony\Component\HttpFoundation\Cookie[] 
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
          * @static 
          */ 
         public static function getQueuedCookies()
@@ -4781,7 +4799,11 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $directory
          * @param bool $hidden
+<<<<<<< HEAD
+         * @return array 
+=======
          * @return \Symfony\Component\Finder\SplFileInfo[] 
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
          * @static 
          */ 
         public static function files($directory, $hidden = false)
@@ -4794,7 +4816,11 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $directory
          * @param bool $hidden
+<<<<<<< HEAD
+         * @return array 
+=======
          * @return \Symfony\Component\Finder\SplFileInfo[] 
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
          * @static 
          */ 
         public static function allFiles($directory, $hidden = false)
@@ -5830,7 +5856,11 @@ namespace Illuminate\Support\Facades {
          *
          * @param string|array $view
          * @param array $data
+<<<<<<< HEAD
+         * @return \Illuminate\View\View 
+=======
          * @return string 
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
          * @static 
          */ 
         public static function render($view, $data = array())
@@ -6987,24 +7017,40 @@ namespace Illuminate\Support\Facades {
          * Merge new input into the current request's input array.
          *
          * @param array $input
+<<<<<<< HEAD
+         * @return void 
+=======
          * @return \Illuminate\Http\Request 
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
          * @static 
          */ 
         public static function merge($input)
         {
+<<<<<<< HEAD
+            \Illuminate\Http\Request::merge($input);
+=======
             return \Illuminate\Http\Request::merge($input);
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
         }
         
         /**
          * Replace the input for the current request.
          *
          * @param array $input
+<<<<<<< HEAD
+         * @return void 
+=======
          * @return \Illuminate\Http\Request 
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
          * @static 
          */ 
         public static function replace($input)
         {
+<<<<<<< HEAD
+            \Illuminate\Http\Request::replace($input);
+=======
             return \Illuminate\Http\Request::replace($input);
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
         }
         
         /**
@@ -7473,8 +7519,13 @@ namespace Illuminate\Support\Facades {
          * 
          * Order of precedence: PATH (routing placeholders or custom attributes), GET, BODY
          *
+<<<<<<< HEAD
+         * @param string $key the key
+         * @param mixed $default the default value if the parameter key does not exist
+=======
          * @param string $key The key
          * @param mixed $default The default value if the parameter key does not exist
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
          * @return mixed 
          * @static 
          */ 
@@ -8110,6 +8161,8 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+<<<<<<< HEAD
+=======
          * Returns the protocol version.
          * 
          * If the application is behind a proxy, the protocol version used in the
@@ -8128,6 +8181,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
          * Returns the request body content.
          *
          * @param bool $asResource If true, a resource will be returned
@@ -9105,6 +9159,9 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+<<<<<<< HEAD
+         * Route an api resource to a controller.
+=======
          * Register an array of API resource controllers.
          *
          * @param array $resources
@@ -9118,6 +9175,7 @@ namespace Illuminate\Support\Facades {
         
         /**
          * Route an API resource to a controller.
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
          *
          * @param string $name
          * @param string $controller
@@ -10698,6 +10756,8 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+<<<<<<< HEAD
+=======
          * Create a streamed response for a given file.
          *
          * @param string $path
@@ -10727,6 +10787,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
          * Write the contents of a file.
          *
          * @param string $path
@@ -10943,7 +11004,11 @@ namespace Illuminate\Support\Facades {
          * @param \League\Flysystem\Rackspace\RackspaceAdapter $adapter
          * @param string $path
          * @param \DateTimeInterface $expiration
+<<<<<<< HEAD
+         * @param $options
+=======
          * @param array $options
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
          * @return string 
          * @static 
          */ 
@@ -11027,6 +11092,8 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+<<<<<<< HEAD
+=======
          * Flush the Flysystem cache.
          *
          * @return void 
@@ -11038,6 +11105,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
          * Get the Flysystem driver.
          *
          * @return \League\Flysystem\FilesystemInterface 
@@ -11257,6 +11325,8 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+<<<<<<< HEAD
+=======
          * Get the default named parameters used by the URL generator.
          *
          * @return array 
@@ -11268,6 +11338,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
          * Force the scheme for URLs.
          *
          * @param string $schema
@@ -12457,8 +12528,12 @@ namespace Encore\Admin\Facades {
         /**
          * Set navbar.
          *
+<<<<<<< HEAD
+         * @param \Closure $builder
+=======
          * @param \Closure|null $builder
          * @return \Encore\Admin\Navbar 
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
          * @static 
          */ 
         public static function navbar($builder = null)
@@ -12489,16 +12564,25 @@ namespace Encore\Admin\Facades {
         }
         
         /**
+<<<<<<< HEAD
+         * 
+         *
+=======
          * Extend a extension.
          *
          * @param string $name
          * @param string $class
          * @return void 
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
          * @static 
          */ 
         public static function extend($name, $class)
         {
+<<<<<<< HEAD
+            return \Encore\Admin\Admin::extend($name, $class);
+=======
             \Encore\Admin\Admin::extend($name, $class);
+>>>>>>> b539cedae56e2099dca32ab16636053a90f88fbc
         }
          
     }
