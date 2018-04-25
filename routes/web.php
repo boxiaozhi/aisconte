@@ -15,3 +15,8 @@
 Route::get('/', function () {
     return view('index');
 });
+
+//笔记模块
+Route::group(['namespace' => 'Note'], function(){
+    Route::get('/note','NoteController@index')->name('note.index');
+});
