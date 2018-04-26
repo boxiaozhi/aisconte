@@ -5,7 +5,6 @@
 <div>
     @include('layouts._header')
     <div>
-        @include('layouts._sidebar')
         @yield('content')
     </div>
     @include('layouts._footer')

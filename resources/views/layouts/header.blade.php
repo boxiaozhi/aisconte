@@ -7,4 +7,5 @@
 
     <title>@yield('title', 'IsConte')</title>
     <link href="{{ asset('css/public.css') }}" rel="stylesheet">
+    @yield('css')
 </head>

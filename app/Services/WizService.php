@@ -23,13 +23,13 @@ class WizService
 
     public function __construct()
     {
-        $userId   = config('note.user_id');
-        $password = config('note.password');
+        $userId   = config('wiz.user_id');
+        $password = config('wiz.password');
 
-        $this->prefix = config('note.cache_prefix');
+        $this->prefix = config('wiz.cache_prefix');
         $this->userKey = $this->prefix.'user';
 
-        $this->client = new GuzzleClient(['base_uri' => config('note.base_uri')]);
+        $this->client = new GuzzleClient(['base_uri' => config('wiz.base_uri')]);
 
         $this->loginCheck($userId, $password);
     }
