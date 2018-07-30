@@ -10,7 +10,6 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import iview from 'iview'
-import ElementUI from 'element-ui'
 import router from '@/router/index'
 import axios from 'axios'
 import vuex from 'vuex'
@@ -22,13 +21,11 @@ import particlesJS from 'particles.js'
 import index from '@/components/Index'
 import globalPlugins from '@/components/GlobalPlugins'
 import '!style-loader!css-loader!less-loader!@/theme/index.less'
-import '!style-loader!css-loader!element-ui/lib/theme-chalk/index.css'
 
 Vue.use(iview, axios)
 Vue.use(vuex)
 Vue.use(particlesJS)
 Vue.use(globalPlugins)
-Vue.use(ElementUI)
 
 const indexVue = new Vue({
     el: '#index',

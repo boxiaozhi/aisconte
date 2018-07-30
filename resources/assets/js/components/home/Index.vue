@@ -1,32 +1,13 @@
 <style lang="less">
-    .c-main {
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        width: 100%;
-        transform: translate(-50%, -50%);
-        .ivu-breadcrumb > span {
-            font-weight: 400;
-        }
-        .ivu-icon {
-            margin-right: 0.4em;
-        }
-        .ivu-avatar-large {
-            width: 60px;
-            height: 60px;
-            border-radius: 30px;
-        }
+    .layout{
+        background: #fff;
+        position: relative;
+        border-radius: 0px;
+        overflow: hidden;
     }
-    .c-bg-transparent {
-        div {
-            background: rgba(255,255,255,0.2);
-        }
-    }
-    .c-center {
-        text-align: center;
-    }
-    .c-icon-group {
-        padding: 1em 0 0 0;
+    .layout-header-bar{
+        background: #fff;
+        box-shadow: 0 1px 1px rgba(0,0,0,.1);
     }
     #particles{
         position: absolute;
@@ -41,29 +22,20 @@
     }
 </style>
 <template>
-    <div>
-        <div class="c-main">
-            <el-row class="c-bg-transparent" type="flex" justify="center" align="bottom">
-                <el-col class="c-center" :xs="{span:24}" :lg="{span:18}">
-                    <Card dis-hover :bordered="false">
-                        <div class="c-center">
-                            <Avatar :src="homeJson.logo" size="large"/>
-                            <h3>{{ hitokoto.text }} - {{ hitokoto.from }}</h3>
-                        </div>
-                    </Card>
-                </el-col>
-            </el-row>
-            <el-row class="c-bg-transparent" type="flex" justify="center" align="bottom">
-                <el-col class="c-icon-group" :xs="{span:24}" :lg="{span:18}">
-                    <div class="c-center">
-                        <el-button-group size="mini">
-                            <el-button v-for="nav in homeJson.navs" :to="nav.href" @click="jump(nav.href)">{{ nav.title }}</el-button>
-                        </el-button-group>
-                    </div>
-                </el-col>
-            </el-row>
-        </div>
-        <div id="particles"></div>
+    <div class="layout">
+        <Card :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto', width: '300px'}">
+            <CellGroup>
+                <Cell title="Only show titles" >Main</Cell>
+            </CellGroup>
+        </Card>
+        <Layout :style="{marginLeft: '300px'}">
+            <Header :style="{background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)'}"></Header>
+            <Content :style="{padding: '0'}">
+                <Card>
+                    <div style="height: 600px">Content</div>
+                </Card>
+            </Content>
+        </Layout>
     </div>
 </template>
 
@@ -81,10 +53,10 @@ export default {
         }
     },
     created() {
-        this.getHitokoto()
+        //this.getHitokoto()
     },
     mounted() {
-        particlesJS('particles', particlesJson);
+        //particlesJS('particles', particlesJson);
     },
     methods: {
         getHitokoto() {

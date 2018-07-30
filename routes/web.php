@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Use Boxiaozhi\Cwiz\Cwiz;
 //前台
 Route::get('/', function () {
     return view('index');
