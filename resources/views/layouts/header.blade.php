@@ -7,5 +7,11 @@
 
     <title>@yield('title', 'IsConte')</title>
     <link href="{{ asset('css/public.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('packages/bootstrap/dist/css/bootstrap-grid.css') }}" rel="stylesheet">
+    <link href="{{ asset('packages/bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet">
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script href="{{ asset('packages/bootstrap/dist/js/bootstrap.js') }}"></script>
     @yield('css')
 </head>

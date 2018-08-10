@@ -1,27 +1,51 @@
 @extends('layouts.main')
 @section('css')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" rel="stylesheet">
-    <link href="https://unpkg.com/basscss@8.0.2/css/basscss.min.css" rel="stylesheet">
     <link href="{{ asset('css/color.css') }}" rel="stylesheet">
     <style type="text/css">
-
+        .n-content{
+            word-break: break-all !important;
+        }
+        .n-content > div{
+            word-break: break-all !important;
+        }
+        .c-title{
+            font-size: 3rem;
+            border-bottom: 1px solid;
+            margin-bottom: 1rem;
+        }
+        .list-group-item.active{
+            background-color: #ccc !important;
+            border-color: #ffffff;
+        }
     </style>
 @endsection
 @section('content')
-    <div class="level is-12">
-        <div class="level-left is-2 bg-gray">
-            <aside class="menu is-size-7">
-                <ul class="menu-list">
-                    @foreach($shareList['data'] as $share)
-                        <li><a>{{ $share['title'] }}</a></li>
-                    @endforeach
-                </ul>
-            </aside>
+<div class="container">
+    <div class="c-title row justify-content-center align-middle">
+        CWIZ NOTE
+    </div>
+    <div class="row justify-content-center">
+        <div class="c-side-bar col-md-3 list-group list-group-flush">
+            @if($shareList)
+                @foreach($shareList as $share)
+                <a href="{{ route('note.index', ['docGuid' => $share['documentGuid']]) }}"
+                   class="text-truncate list-group-item list-group-item-action @if((!request('docGuid') && $loop->first) || (request('docGuid') == $share['documentGuid'])) active @endif"
+                   title="{{ $share['title'] }}"
+                   data-doc-guid="{{ $share['documentGuid'] }}">
+                    {{ $share['title'] }}
+                </a>
+                @endforeach
+            @endif
         </div>
-        <div class="level-right is-8">
-
+        <div class="col-md-9">
+            <div class="n-content word-break">
+                @if($noteDetail)
+                    {!! $noteDetail['html'] !!}
+                @endif
+            </div>
         </div>
     </div>
+</div>
 @endsection
 
 @section('script')
