@@ -13,23 +13,23 @@ use mysqli;
 
 class SystemInfoService
 {
-    public function base(){
+    public static function base(){
         $info = [
             //Linux
             ['name' => 'Uname',             'value' => php_uname()],
             //PHP
             ['name' => 'PHP version',       'value' => 'PHP/'.PHP_VERSION],
             ['name' => 'CGI',               'value' => php_sapi_name()],
-            //Nginx
+            //Server
             ['name' => 'Server',            'value' => array_get($_SERVER, 'SERVER_SOFTWARE')],
             //Mysql
-            ['name'=> 'Database',           'value' =>'MYSQL/'.$this->mysql()],
+            ['name'=> 'Database',           'value' =>'MYSQL/'.self::mysql()],
             //Laravel
             ['name' => 'Laravel version',   'value' => app()->version()],
             ['name' => 'Cache driver',      'value' => config('cache.default')],
             ['name' => 'Session driver',    'value' => config('session.driver')],
             ['name' => 'Queue driver',      'value' => config('queue.default')],
-
+            //base
             ['name' => 'Timezone',          'value' => config('app.timezone')],
             ['name' => 'Locale',            'value' => config('app.locale')],
             ['name' => 'Env',               'value' => config('app.env')],
@@ -38,7 +38,7 @@ class SystemInfoService
         return $info;
     }
 
-    public function mysql()
+    public static function mysql()
     {
         $host     = config('database.connections.mysql.host');
         $username = config('database.connections.mysql.username');

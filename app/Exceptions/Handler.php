@@ -50,4 +50,12 @@ class Handler extends ExceptionHandler
     {
         return parent::render($request, $exception);
     }
+
+    public function handle($request, Exception $exception)
+    {
+        // 只处理自定义异常
+//        if($exception instanceof CException) {
+//        }
+        return parent::render($request, $exception);
+    }
 }

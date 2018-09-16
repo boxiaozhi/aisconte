@@ -94,6 +94,10 @@ align-text@^0.1.1, align-text@^0.1.3:
     longest "^1.0.1"
     repeat-string "^1.5.2"
 
+almond@~0.3.1:
+  version "0.3.3"
+  resolved "http://registry.npm.taobao.org/almond/download/almond-0.3.3.tgz#a0e7c95ac7624d6417b4494b1e68bff693168a20"
+
 alphanum-sort@^1.0.1, alphanum-sort@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
@@ -2212,9 +2216,9 @@ deep-extend@~0.4.0:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.4.2.tgz#48b699c27e334bf89f10892be432f6e4c7d34a7f"
 
-deepmerge@^1.5.2:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-1.5.2.tgz#10499d868844cdad4fee0842df8c7f6f0c95a753"
+deepmerge@^2.1.0:
+  version "2.1.1"
+  resolved "http://registry.npm.taobao.org/deepmerge/download/deepmerge-2.1.1.tgz#e862b4e45ea0555072bf51e7fd0d9845170ae768"
 
 define-properties@^1.1.2:
   version "1.1.2"
@@ -2439,9 +2443,9 @@ electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.30:
   version "1.3.34"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.34.tgz#d93498f40391bb0c16a603d8241b9951404157ed"
 
-element-resize-detector@^1.1.13:
+element-resize-detector@^1.1.14:
   version "1.1.14"
-  resolved "https://registry.yarnpkg.com/element-resize-detector/-/element-resize-detector-1.1.14.tgz#af064a0a618a820ad570a95c5eec5b77be0128c1"
+  resolved "http://registry.npm.taobao.org/element-resize-detector/download/element-resize-detector-1.1.14.tgz#af064a0a618a820ad570a95c5eec5b77be0128c1"
   dependencies:
     batch-processor "^1.0.0"
 
@@ -4349,16 +4353,22 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
-iview@^2.6.0:
-  version "2.9.2"
-  resolved "https://registry.yarnpkg.com/iview/-/iview-2.9.2.tgz#737e896d2028a9d3095f6d0b541233789ae40417"
+iview@^3.0.0:
+  version "3.1.0"
+  resolved "http://registry.npm.taobao.org/iview/download/iview-3.1.0.tgz#b11e62136a1f215f4957961d79104df657a314a0"
   dependencies:
     async-validator "^1.8.2"
-    deepmerge "^1.5.2"
-    element-resize-detector "^1.1.13"
+    deepmerge "^2.1.0"
+    element-resize-detector "^1.1.14"
+    js-calendar "^1.2.3"
     lodash.throttle "^4.1.1"
-    popper.js "^0.6.4"
+    popper.js "^1.14.1"
     tinycolor2 "^1.4.1"
+    v-click-outside-x "^3.0.0"
+
+jquery-mousewheel@~3.1.13:
+  version "3.1.13"
+  resolved "http://registry.npm.taobao.org/jquery-mousewheel/download/jquery-mousewheel-3.1.13.tgz#06f0335f16e353a695e7206bf50503cb523a6ee5"
 
 jquery@^3.1.1:
   version "3.3.1"
@@ -4367,6 +4377,10 @@ jquery@^3.1.1:
 js-base64@^2.1.8, js-base64@^2.1.9:
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.3.tgz#2e545ec2b0f2957f41356510205214e98fad6582"
+
+js-calendar@^1.2.3:
+  version "1.2.3"
+  resolved "http://registry.npm.taobao.org/js-calendar/download/js-calendar-1.2.3.tgz#a583b0644b4e695ba394f344d103dbcc7a7a7d3e"
 
 js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
@@ -5783,9 +5797,9 @@ pngquant-bin@^3.0.0:
     bin-wrapper "^3.0.0"
     logalot "^2.0.0"
 
-popper.js@^0.6.4:
-  version "0.6.4"
-  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-0.6.4.tgz#1837c4760af54d2bb20b66f9c09b92993d84c629"
+popper.js@^1.14.1:
+  version "1.14.4"
+  resolved "http://registry.npm.taobao.org/popper.js/download/popper.js-1.14.4.tgz#8eec1d8ff02a5a3a152dd43414a15c7b79fd69b6"
 
 portfinder@^1.0.9:
   version "1.0.13"
@@ -6737,6 +6751,13 @@ seek-bzip@^1.0.3:
 select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
+
+select2@^4.0.6-rc.1:
+  version "4.0.6-rc.1"
+  resolved "http://registry.npm.taobao.org/select2/download/select2-4.0.6-rc.1.tgz#aa6c3038a7f0f2e91ffade38f0a21c15e1813276"
+  dependencies:
+    almond "~0.3.1"
+    jquery-mousewheel "~3.1.13"
 
 selfsigned@^1.9.1:
   version "1.10.2"
@@ -7965,6 +7986,10 @@ uuid@^3.0.0, uuid@^3.0.1, uuid@^3.1.0:
 uws@~9.14.0:
   version "9.14.0"
   resolved "https://registry.yarnpkg.com/uws/-/uws-9.14.0.tgz#fac8386befc33a7a3705cbd58dc47b430ca4dd95"
+
+v-click-outside-x@^3.0.0:
+  version "3.2.2"
+  resolved "http://registry.npm.taobao.org/v-click-outside-x/download/v-click-outside-x-3.2.2.tgz#7e02cd18836890ffe73981f3aa6e96a0d84286f0"
 
 vali-date@^1.0.0:
   version "1.0.0"

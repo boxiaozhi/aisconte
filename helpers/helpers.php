@@ -1,4 +1,5 @@
 <?php
+//日志记录
 if (!function_exists('writeLog')){
     function writeLog($dir, $data, $isDaily = false){
         if ($isDaily){
@@ -16,5 +17,26 @@ if (!function_exists('writeLog')){
             $data = json_encode($data);
         }
         file_put_contents($logFile, '[' . Carbon\Carbon::now()->toDateTimeString() .'] ' . $data . PHP_EOL, FILE_APPEND);
+    }
+}
+
+//jwt_token
+if (! function_exists('csrf_token')) {
+    /**
+     * Get the CSRF token value.
+     *
+     * @return string
+     *
+     * @throws \RuntimeException
+     */
+    function csrf_token()
+    {
+        $session = app('session');
+
+        if (isset($session)) {
+            return $session->token();
+        }
+
+        throw new RuntimeException('Application session store not set.');
     }
 }

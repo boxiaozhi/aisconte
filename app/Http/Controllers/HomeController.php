@@ -3,21 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\HitokotoService;
 
 class HomeController extends Controller
 {
-    /**
-     * 获取 hitokoto
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function hitokoto(Request $request)
+    public function index(Request $request)
     {
-        $cat = $request->cat ?? ''; //类别
-        $hitokoto = new HitokotoService();
-        $res = $hitokoto->hitokoto($cat);
-        $res['text'] = $res['hitokoto'];
-        return response()->json($res);
+        return redirect(route('note.index')); //暂时跳转到笔记模块
     }
 }

@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "almasaeed2010/adminlte": "~2.4",
         "barryvdh/laravel-cors": "^0.10.0",
         "boxiaozhi/cwiz": "^1.0.2",
         "doctrine/dbal": "~2.3",
@@ -16,9 +17,11 @@
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "predis/predis": "^1.1",
-        "twbs/bootstrap": "4.1.3"
+        "twbs/bootstrap": "4.1.3",
+        "tymon/jwt-auth": "1.0.0-rc.2"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.1",
         "barryvdh/laravel-ide-helper": "^2.4",
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",

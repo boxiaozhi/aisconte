@@ -12,11 +12,11 @@
 */
 
 //首页
-Route::get('/', function () {
-    return redirect(route('note.index'));
-});
+Route::get('/', 'HomeController@index');
 
 //笔记模块
-Route::group(['namespace' => 'Note'], function(){
-    Route::get('/note','NoteController@index')->name('note.index');
+Route::group(['namespace' => 'Frontend', 'prefix' => 'note'], function(){
+    Route::get('/','NoteController@index')->name('note.index');
 });
+
+
