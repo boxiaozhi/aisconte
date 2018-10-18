@@ -15,6 +15,12 @@ use Illuminate\Http\Request;
 
 class NaviController extends Controller
 {
+    /**
+     * 主页
+     *
+     * @param Request $request
+     * @return void
+     */
     public function index(Request $request)
     {
         $naviList = NaviService::naviList();
