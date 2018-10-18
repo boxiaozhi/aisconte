@@ -8,6 +8,7 @@
     <title>@yield('title', 'IsConte')</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link href="https://cdn.bootcss.com/limonte-sweetalert2/7.21.1/sweetalert2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('packages/adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/adminlte/bower_components/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/adminlte/bower_components/Ionicons/css/ionicons.min.css') }}">

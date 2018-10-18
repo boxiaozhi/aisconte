@@ -17,7 +17,6 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.'], function(){
     Route::group(['middleware' => ['admin.auth']], function(){
         //仪表盘
         Route::get('/dashboard','DashboardController@index')->name('dashboard.index');
-
         //导航
         Route::resource('/navi', 'NaviInfoController', ['parameters' => [
             'naviInfo' => 'id'

@@ -15,7 +15,7 @@
                             <div class="pull-right">
                                 <div class="btn-group pull-right" style="margin-right: 10px">
                                     <a href="{{ route('admin.naviLabel.create') }}" class="btn btn-sm btn-success">
-                                        <i class="fa fa-save"></i>&nbsp;&nbsp;New
+                                        <i class="fa fa-save"></i>&nbsp;&nbsp;{{ __('admin.new') }}
                                     </a>
                                 </div>
 
@@ -25,13 +25,11 @@
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
-                                    <th>
-                                        ID<a class="fa fa-fw fa-sort-amount-asc" href="http://laravel-admin.org/demo/auth/permissions?_pjax=%23pjax-container&amp;_sort%5Bcolumn%5D=id&amp;_sort%5Btype%5D=desc"></a>
-                                    </th>
-                                    <th>Name</th>
-                                    <th>Created At</th>
-                                    <th>Updated At</th>
-                                    <th>Action</th>
+                                    <th>ID</th>
+                                    <th>{{ __('admin.name') }}</th>
+                                    <th>{{ __('admin.created_at') }}</th>
+                                    <th>{{ __('admin.updated_at') }}</th>
+                                    <th>{{ __('admin.action') }}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -42,9 +40,9 @@
                                             <td>{{ $list['created_at'] }}</td>
                                             <td>{{ $list['updated_at'] }}</td>
                                             <td>
-                                                <a href="#">
-                                                    <i class="fa fa-eye"></i>
-                                                </a>
+                                                {{--<a href="#">--}}
+                                                    {{--<i class="fa fa-eye"></i>--}}
+                                                {{--</a>--}}
                                                 <a href="{{route('admin.naviLabel.edit', ['id' => $list['id']])}}">
                                                     <i class="fa fa-edit"></i>
                                                 </a>

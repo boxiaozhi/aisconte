@@ -51,10 +51,9 @@ class AdminAuth extends BaseMiddleware
             try {
                 // 刷新用户的 token
                 $token = $this->auth->refresh();
-                cookie('jwt_token', $token);
-                return $this->setAuthenticationHeader($next($request), $token);
+                //cookie('jwt_token', $token);
+                return $this->setAuthenticationHeader($next($request), $token)->cookie('jwt_token', $token);
             } catch (JWTException $exception) {
-                dd($exception->getMessage());
                 // 如果捕获到此异常，即代表 refresh 也过期了，用户无法刷新令牌，需要重新登录。
                 if($resJson){
                     return response()->json(['error' =>'请重新登录'], 401);

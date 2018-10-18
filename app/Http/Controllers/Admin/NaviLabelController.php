@@ -6,6 +6,7 @@ use App\Exceptions\CException;
 use App\Models\NaviLabel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use QL\QueryList;
 
 class NaviLabelController extends Controller
 {

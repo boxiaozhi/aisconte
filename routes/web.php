@@ -19,4 +19,8 @@ Route::group(['namespace' => 'Frontend', 'prefix' => 'note'], function(){
     Route::get('/','NoteController@index')->name('note.index');
 });
 
+//导航模块
+Route::group(['namespace' => 'Frontend', 'prefix' => 'navi'], function(){
+    Route::get('/','NaviController@index')->name('navi.index');
+});
 

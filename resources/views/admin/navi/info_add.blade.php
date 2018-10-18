@@ -31,10 +31,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputLabel" class="col-sm-2 control-label">标签</label>
+                                    <label for="selectLabel" class="col-sm-2 control-label">标签</label>
 
                                     <div class="col-sm-10">
-                                        <select class="col-sm-12" name="label" multiple>
+                                        <select class="col-sm-12" id="selectLabel" multiple>
                                             @foreach($labels as $label)
                                                 <option value="{{ $label['id'] }}">{{ $label['name'] }}</option>
                                             @endforeach
@@ -45,7 +45,7 @@
                             <!-- /.box-body -->
                             <div class="box-footer col-sm-12">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="button" class="btn btn-info" onclick="info_create()">添加</button>
+                                    <button type="button" class="btn btn-info" onclick="create()">添加</button>
                                 </div>
                             </div>
                             <!-- /.box-footer -->

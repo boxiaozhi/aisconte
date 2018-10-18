@@ -26,8 +26,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="../../index.html"><i class="fa fa-circle-o"></i>分类</a></li>
-                    <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>列表</a></li>
+                    <li><a href="{{ route('admin.navi.index') }}"><i class="fa fa-circle-o"></i>列表</a></li>
+                    <li><a href="{{ route('admin.naviLabel.index') }}"><i class="fa fa-circle-o"></i>标签</a></li>
                 </ul>
             </li>
             <li class="treeview">

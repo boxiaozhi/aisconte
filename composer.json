@@ -6,7 +6,6 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "almasaeed2010/adminlte": "~2.4",
         "barryvdh/laravel-cors": "^0.10.0",
         "boxiaozhi/cwiz": "^1.0.2",
         "doctrine/dbal": "~2.3",

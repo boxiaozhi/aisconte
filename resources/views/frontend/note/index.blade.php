@@ -15,25 +15,31 @@
         }
         .list-group-item.active{
             background-color: #ccc !important;
-            border-color: #ffffff;
+            border-color: #ddd;
+        }
+        .list-group-item,.list-group-item:hover{
+            border: none;
+        }
+        .list-group > a {
+            border-radius: 0 !important;
         }
     </style>
 @endsection
 @section('content')
 <div class="container">
     <div class="c-title row justify-content-center align-middle">
-        CWIZ NOTE
+        NOTE
     </div>
     <div class="row justify-content-center">
-        <div class="c-side-bar col-md-3 list-group list-group-flush">
+        <div class="col-md-3 list-group">
             @if($shareList)
                 @foreach($shareList as $share)
-                <a href="{{ route('note.index', ['docGuid' => $share['documentGuid']]) }}"
-                   class="text-truncate list-group-item list-group-item-action @if((!request('docGuid') && $loop->first) || (request('docGuid') == $share['documentGuid'])) active @endif"
-                   title="{{ $share['title'] }}"
-                   data-doc-guid="{{ $share['documentGuid'] }}">
-                    {{ $share['title'] }}
-                </a>
+                        <a href="{{ route('note.index', ['docGuid' => $share['documentGuid']]) }}"
+                           class="text-truncate list-group-item list-group-item-action @if((!request('docGuid') && $loop->first) || (request('docGuid') == $share['documentGuid'])) active @endif"
+                           title="{{ $share['title'] }}"
+                           data-doc-guid="{{ $share['documentGuid'] }}">
+                            {{ $share['title'] }}
+                        </a>
                 @endforeach
             @endif
         </div>

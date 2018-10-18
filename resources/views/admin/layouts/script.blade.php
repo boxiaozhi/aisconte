@@ -6,7 +6,8 @@
 <script src="{{ asset('packages/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
 <script src="{{ asset('packages/adminlte/bower_components/fastclick/lib/fastclick.js') }}"></script>
 <script src="{{ asset('packages/adminlte/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+<script src="https://cdn.bootcss.com/limonte-sweetalert2/7.21.1/sweetalert2.min.js"></script>
 <script src="{{ asset('packages/adminlte/dist/js/adminlte.js') }}"></script>
-<script src="{{ asset('js/public.js') }}"></script>
+<script src="{{ asset('js/admin/public.js') }}"></script>
 
 @yield('script')

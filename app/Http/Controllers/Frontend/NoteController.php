@@ -47,5 +47,4 @@ class NoteController extends Controller
             ->with('userInfo', $userInfo);
     }
 
-
 }
