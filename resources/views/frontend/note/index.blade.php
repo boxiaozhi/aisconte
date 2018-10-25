@@ -1,6 +1,5 @@
 @extends('layouts.main')
 @section('css')
-    <link href="{{ asset('css/color.css') }}" rel="stylesheet">
     <style type="text/css">
         .n-content{
             word-break: break-all !important;
@@ -55,5 +54,5 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('js/frontend/note/note.js') }}"></script>
+    <script src="{{ asset('js/frontend/note.js') }}"></script>
 @endsection

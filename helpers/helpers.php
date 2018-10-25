@@ -40,3 +40,18 @@ if (! function_exists('csrf_token')) {
         throw new RuntimeException('Application session store not set.');
     }
 }
+
+/**
+ * 获取字符串中的URL
+ * @param $str
+ * @return string
+ */
+if (! function_exists('getUrl')) {
+    function getUrl($str)
+    {
+        $matches = [];
+        $regex   = '@(?i)\b((?:[a-z][\w-]+:(?:/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?«»“”‘’]))@';
+        preg_match($regex, $str, $matches);
+        return (isset($matches[0]) && $matches[0]) ? $matches[0] : '';
+    }
+}

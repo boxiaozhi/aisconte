@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('packages/adminlte/dist/css/AdminLTE.min.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/adminlte/dist/css/skins/_all-skins.min.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('css/color.css') }}">
     <link rel="stylesheet" href="{{ asset('css/public.css') }}">
-
     @yield('css')
 </head>

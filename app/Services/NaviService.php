@@ -13,6 +13,11 @@ use App\Models\NaviInfo;
 
 class NaviService
 {
+    /**
+     * 导航列表
+     *
+     * @return void
+     */
     public static function naviList()
     {
         $list = NaviInfo::orderBy('id', 'desc')->get();

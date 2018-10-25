@@ -57,5 +57,5 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('js/frontend/navi/navi.js') }}"></script>
+    <script src="{{ asset('js/frontend/navi.js') }}"></script>
 @endsection

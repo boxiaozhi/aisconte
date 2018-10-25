@@ -11,8 +11,10 @@
 |
 */
 
-//首页
-Route::get('/', 'HomeController@index');
+//着陆页
+Route::group(['namespace' => 'Frontend'], function(){
+    Route::get('/','HomeController@index')->name('index');
+});
 
 //笔记模块
 Route::group(['namespace' => 'Frontend', 'prefix' => 'note'], function(){

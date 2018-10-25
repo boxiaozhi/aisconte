@@ -7,6 +7,7 @@
     "require": {
         "php": ">=7.0.0",
         "barryvdh/laravel-cors": "^0.10.0",
+        "boxiaozhi/cmubu": "^1.1",
         "boxiaozhi/cwiz": "^1.0.2",
         "doctrine/dbal": "~2.3",
         "erusev/parsedown": "^1.6",
