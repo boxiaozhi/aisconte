@@ -59,7 +59,7 @@
                         $url = getUrl($item['note']);
                     @endphp
                     @if($url)
-                        <a class="margin-r-5" href="{{ $url }}" title="{{ $url }}" target="_blank">{{ $item['text'] }}</a>
+                        <a class="margin-r-5" href="{{ $url }}" target="_blank" title="{{ $url }}">{{ $item['text'] }}</a>
                     @else
                         <a class="margin-r-5" title="{{ $item['note'] }}">{{ $item['text'] }}</a>
                     @endif
@@ -69,7 +69,14 @@
         <div class="link text-center">
             <div class="link-body">
                 @foreach($info['SiteLink']['children'] as $item)
-                    <a class="margin-r-5" href="{{ getUrl($item['note']) }}" target="_blank">{{ $item['text'] }}</a>
+                    @php
+                        $url = getUrl($item['note']);
+                    @endphp
+                    @if($url)
+                        <a class="margin-r-5" href="{{ $url }}" target="_blank" title="{{ $url }}">{{ $item['text'] }}</a>
+                    @else
+                        <a class="margin-r-5" title="{{ $item['note'] }}">{{ $item['text'] }}</a>
+                    @endif
                 @endforeach
             </div>
         </div>
