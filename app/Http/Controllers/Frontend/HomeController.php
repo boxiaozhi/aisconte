@@ -14,7 +14,7 @@ class HomeController extends Controller
         $cmubu = new Cmubu();
         $cmubuService = new CmubuService();
 
-        $docInfo = $cmubu->docContent('1f1-SnRGxw');
+        $docInfo = $cmubu->docContent('1f1-SnRGxw'); //mubu 文档ID
         $dataJson = $docInfo['data']['definition'];
         $data = json_decode($dataJson, true);
 
