@@ -32,7 +32,7 @@ class HomeController extends Controller
 
         //dd($info);
 
-        return view('frontend.main.index')
+        return view('frontend.home.index')
             ->with('info', $info);
     }
 }

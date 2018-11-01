@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Encore\Admin\Config\Config;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 

@@ -180,6 +180,8 @@ return [
         //Cors
         Barryvdh\Cors\ServiceProvider::class,
 
+        //ViewComposer
+        App\Providers\ComposerServiceProvider::class,
     ],
 
     /*

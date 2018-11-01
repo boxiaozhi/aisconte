@@ -61,5 +61,6 @@ class Kernel extends HttpKernel
         'jwt.auth' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
         'admin.auth' => \App\Http\Middleware\AdminAuth::class,
         'admin.login.check' => \App\Http\Middleware\AdminLoginCheck::class,
+        'frontend.base' => \App\Http\Middleware\FrontendBase::class,
     ];
 }
