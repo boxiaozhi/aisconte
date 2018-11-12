@@ -2,7 +2,7 @@
 @section('css')
     <style type="text/css">
         body{
-            background-color: rgb(102, 143, 137);
+            background-color: rgb(255, 255, 255);
         }
         .container{
             padding: 10% 0;
@@ -10,6 +10,9 @@
         .nickname{
             font-size: 35px;
             font-weight: 700;
+        }
+        .nickname>a:hover{
+            color: black;
         }
         .slogan{
             padding: 5px;
@@ -20,21 +23,21 @@
         }
         .contact-body>a+a:before{
             padding: 0 5px;
-            color: #ccc;
+            color: #000000;
             content: "/\00a0";
         }
         .link-body,.contact-body{
             padding: 8px 15px;
-            background-color: rgba(255,255,255,.15);
+            background-color: rgba(33, 33, 33, 0.15);
         }
         .link-body>a:hover{
-            color: #000000;
+            color: #ffffff;
         }
         a {
-            color: white;
+            color: #000000;
         }
         a:hover{
-            color: white;
+            color: #ffffff;
         }
     </style>
 @endsection
@@ -59,7 +62,7 @@
                         $url = getUrl($item['note']);
                     @endphp
                     @if($url)
-                        <a class="margin-r-5" href="{{ $url }}" target="_blank" title="{{ $url }}">{{ $item['text'] }}</a>
+                        <a class="margin-r-5" href="{{ $url }}" target="_self" title="{{ $url }}">{{ $item['text'] }}</a>
                     @else
                         <a class="margin-r-5" title="{{ $item['note'] }}">{{ $item['text'] }}</a>
                     @endif
@@ -73,7 +76,7 @@
                         $url = getUrl($item['note']);
                     @endphp
                     @if($url)
-                        <a class="margin-r-5" href="{{ $url }}" target="_blank" title="{{ $url }}">{{ $item['text'] }}</a>
+                        <a class="margin-r-5" href="{{ $url }}" target="_self" title="{{ $url }}">{{ $item['text'] }}</a>
                     @else
                         <a class="margin-r-5" title="{{ $item['note'] }}">{{ $item['text'] }}</a>
                     @endif
