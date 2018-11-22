@@ -13,7 +13,9 @@
         "erusev/parsedown": "^1.6",
         "fideloper/proxy": "^3.3",
         "guzzlehttp/guzzle": "^6.3",
+        "h4cc/wkhtmltopdf-amd64": "0.12.4",
         "jaeger/querylist": "^4.0",
+        "knplabs/knp-snappy": "^1.0",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "predis/predis": "^1.1",
@@ -67,5 +69,11 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.laravel-china.org"
+        }
     }
 }
