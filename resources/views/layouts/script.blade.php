@@ -8,4 +8,13 @@
 <script src="{{ asset('packages/adminlte/dist/js/adminlte.js') }}"></script>
 
 <script src="{{ asset('js/public.js') }}"></script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?57b9ef85fb5c8dc96b8d3e0cdd746545";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 @yield('script')

@@ -1,29 +1,32 @@
 <?php
+/**
+ * Date: 2018/12/6
+ * Time: 21:15
+ */
 
 namespace App\Http\Controllers\Frontend;
 
+
 use App\Http\Controllers\Controller;
-use Boxiaozhi\Cmubu\Cmubu;
 use App\Services\CmubuService;
+use Boxiaozhi\Cmubu\Cmubu;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class TimelineController extends Controller
 {
-    private $docName = 'Develop/Config/isconte/home';
+    private $docName = 'Develop/Config/isconte/timeline';
 
     public function index(Request $request)
     {
         try{
             $cmubu = new Cmubu();
             $cmubuService = new CmubuService();
+
             $docInfo = $cmubu->docInfoByPath($this->docName);
             $data = $cmubu->docContent($docInfo['id']); //mubu 文档ID
 
             $keyArr = [
-                'Nickname',
-                'Slogan',
-                'Contact',
-                'SiteLink',
+                'over',
             ];
 
             $info = [];
@@ -34,7 +37,7 @@ class HomeController extends Controller
             abort(404);
         }
 
-        return view('frontend.home.index')
+        return view('frontend.timeline.index')
             ->with('info', $info);
     }
 }

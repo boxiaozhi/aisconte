@@ -6,13 +6,18 @@ Route::group(['middleware' => 'frontend.base'], function(){
         Route::get('/','HomeController@index')->name('index');
     });
 
-    //笔记模块
+    //笔记
     Route::group(['namespace' => 'Frontend', 'prefix' => 'note'], function(){
         Route::get('/','NoteController@index')->name('note.index');
     });
 
-    //导航模块
+    //导航
     Route::group(['namespace' => 'Frontend', 'prefix' => 'navi'], function(){
         Route::get('/','NaviController@index')->name('navi.index');
+    });
+
+    //时间轴
+    Route::group(['namespace' => 'Frontend', 'prefix' => 'timeline'], function(){
+        Route::get('/','TimelineController@index')->name('timeline.index');
     });
 });

@@ -52,7 +52,6 @@
     </div>
 </div>
 @endsection
-
 @section('script')
     <script src="{{ asset('js/frontend/note.js') }}"></script>
 @endsection
