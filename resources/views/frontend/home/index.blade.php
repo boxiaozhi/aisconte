@@ -25,16 +25,35 @@
                 <nav class="breadcrumb is-small" aria-label="breadcrumbs">
                     <ul>
                         @foreach($info['Contact']['children'] as $item)
+                            @if(isset($item['finish']) && $item['finish'])
+                                @continue
+                            @endif
                             <li>
                             @php
-                                    $url = getUrl($item['note']);
-                                @endphp
-                                @if($url)
-                                        <a href="{{ $url }}" target="_self" title="{{ $url }}">{{ $item['text'] }}</a>
-
-                                @else
-                                        <a title="{{ $item['note'] }}">{{ $item['text'] }}</a>
-                                @endif
+                                $url = getUrl($item['note']);
+                                $textArr = explode('.', $item['text']);
+                                $text = $textArr[0];
+                                $cnt = count($textArr);
+                            @endphp
+                            @if($url)
+                                <a href="{{ $url }}" target="_self" title="{{ $url }}">
+                                    @if($cnt > 1)
+                                        <span class="icon is-small">
+                                            <i class="{{ $textArr[1] }}" aria-hidden="true"></i>
+                                        </span>
+                                    @endif
+                                    {{ $text }}
+                                </a>
+                            @else
+                                <a title="{{ $item['note'] }}">
+                                    @if($cnt > 1)
+                                        <span class="icon is-small">
+                                            <i class="{{ $textArr[1] }}" aria-hidden="true"></i>
+                                        </span>
+                                    @endif
+                                    {{ $text }}
+                                </a>
+                            @endif
                             </li>
                         @endforeach
                     </ul>
