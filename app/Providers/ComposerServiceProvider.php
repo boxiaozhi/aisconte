@@ -21,7 +21,7 @@ class ComposerServiceProvider extends ServiceProvider
             } else {
                 $title = config('app.name');
             }
-            $view->with('pageTitle', $title);
+            $view->with('viewName',$view->name())->with('pageTitle', $title);
         });
     }
 
