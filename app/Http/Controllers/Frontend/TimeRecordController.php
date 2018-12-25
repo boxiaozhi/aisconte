@@ -12,7 +12,7 @@ use App\Services\CmubuService;
 use Boxiaozhi\Cmubu\Cmubu;
 use Illuminate\Http\Request;
 
-class TimelineController extends Controller
+class TimeRecordController extends Controller
 {
     private $docName = 'Develop/Config/isconte/timeline';
 
@@ -37,7 +37,7 @@ class TimelineController extends Controller
             abort(404);
         }
 
-        return view('frontend.timeline.index')
+        return view('frontend.timeRecord.index')
             ->with('info', $info);
     }
 }

@@ -17,7 +17,7 @@ Route::group(['middleware' => 'frontend.base'], function(){
     });
 
     //时间轴
-    Route::group(['namespace' => 'Frontend', 'prefix' => 'timeline'], function(){
-        Route::get('/','TimelineController@index')->name('timeline.index');
+    Route::group(['namespace' => 'Frontend', 'prefix' => 'timeRecord'], function(){
+        Route::get('/','TimeRecordController@index')->name('timeRecord.index');
     });
 });
