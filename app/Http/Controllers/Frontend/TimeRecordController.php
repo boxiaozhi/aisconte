@@ -27,6 +27,7 @@ class TimeRecordController extends Controller
 
             $keyArr = [
                 'over',
+                'future'
             ];
 
             $info = [];
