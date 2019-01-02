@@ -2,7 +2,7 @@
 function countTime(id, time) {
     var date = new Date();
     var now = date.getTime();
-    var endDate = new Date(time + " 00:00:00");//设置截止时间
+    var endDate = new Date(time);//设置截止时间
     var end = endDate.getTime();
     var leftTime = end - now; //时间差
     var d, h, m, s, ms;
@@ -25,9 +25,13 @@ function countTime(id, time) {
             h = "0" + h;
         }
     } else {
-        console.log('已截止')
+        console.log('已截止');
     }
     //将倒计时赋值到div中'
     var str = d + "天" + h + "时" + m + "分" + s + "秒";
     $('#'+id).html(str);
+}
+
+function recordTime() {
+    
 }

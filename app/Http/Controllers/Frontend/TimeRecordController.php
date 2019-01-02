@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 
 class TimeRecordController extends Controller
 {
-    private $docName = 'Develop/Config/isconte/timeline';
+    private $docName = 'Develop/Config/isconte/timeRecord';
 
     public function index(Request $request)
     {
