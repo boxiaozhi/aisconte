@@ -1,52 +1,43 @@
-@extends('layouts.main')
+@extends('frontend.layouts.main')
 @section('css')
     <style type="text/css">
-        .n-content{
-            word-break: break-all !important;
-        }
-        .n-content > div{
-            word-break: break-all !important;
-        }
-        .c-title{
-            font-size: 3rem;
-            border-bottom: 1px solid;
-            margin-bottom: 1rem;
-        }
-        .list-group-item.active{
-            background-color: #ccc !important;
-            border-color: #ddd;
-        }
-        .list-group-item,.list-group-item:hover{
-            border: none;
-        }
-        .list-group > a {
-            border-radius: 0 !important;
+        .menu-list a.is-active{
+            background-color: #000000;
         }
     </style>
 @endsection
 @section('content')
-<div class="container">
-    <div class="c-title row justify-content-center align-middle">
-        NOTE
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-md-3 list-group">
-            @if($shareList)
-                @foreach($shareList as $share)
-                        <a href="{{ route('note.index', ['docGuid' => $share['documentGuid']]) }}"
-                           class="text-truncate list-group-item list-group-item-action @if((!request('docGuid') && $loop->first) || (request('docGuid') == $share['documentGuid'])) active @endif"
-                           title="{{ $share['title'] }}"
-                           data-doc-guid="{{ $share['documentGuid'] }}">
-                            {{ $share['title'] }}
-                        </a>
-                @endforeach
-            @endif
+<div class="container padding-t-b">
+    <div class="columns is-mobile">
+        <div class="column is-one-third">
+            <p class="title is-3 has-text-centered">NOTE</p>
+            <aside class="menu">
+                <ul class="menu-list">
+                    @if($shareList)
+                        @foreach($shareList as $share)
+                            <li>
+                                <a href="{{ route('note.index', ['docGuid' => $share['documentGuid']]) }}"
+                                   class="@if((!request('docGuid') && $loop->first) || (request('docGuid') == $share['documentGuid'])) is-active @endif"
+                                   title="{{ $share['title'] }}"
+                                   data-doc-guid="{{ $share['documentGuid'] }}">
+                                    {{ $share['title'] }}
+                                </a>
+                            </li>
+                        @endforeach
+                    @endif
+                </ul>
+            </aside>
         </div>
-        <div class="col-md-9">
-            <div class="n-content word-break">
-                @if($noteDetail)
-                    {!! $noteDetail['html'] !!}
-                @endif
+        <div class="column">
+            <div class="row justify-content-center">
+
+                <div class="col-md-9">
+                    <div class="n-content word-break">
+                        @if($noteDetail)
+                            {!! $noteDetail['html'] !!}
+                        @endif
+                    </div>
+                </div>
             </div>
         </div>
     </div>

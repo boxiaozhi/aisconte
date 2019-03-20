@@ -1,6 +1,6 @@
 <?php
 /* 后台模块 */
-Route::group(['prefix' => 'admin', 'as'=>'admin.'], function(){
+Route::group(['prefix' => 'adminc', 'as'=>'admin.'], function(){
     //登录注册
     Route::group(['namespace' => 'Auth', 'middleware' => ['admin.login.check']], function(){
         Route::get('/','LoginController@index')->name('login.index');
