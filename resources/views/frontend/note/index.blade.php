@@ -8,7 +8,7 @@
 @endsection
 @section('content')
 <div class="container padding-t-b">
-    <div class="columns is-mobile">
+    <div class="columns">
         <div class="column is-one-third">
             <p class="title is-3 has-text-centered">NOTE</p>
             <aside class="menu">
@@ -30,7 +30,6 @@
         </div>
         <div class="column">
             <div class="row justify-content-center">
-
                 <div class="col-md-9">
                     <div class="n-content word-break">
                         @if($noteDetail)

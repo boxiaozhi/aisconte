@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('frontend.layouts.main')
 @section('css')
     <style type="text/css">
         .hero-footer{
