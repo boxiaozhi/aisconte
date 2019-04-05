@@ -5,7 +5,7 @@
 <body>
     @yield('content')
     @include('frontend.layouts.script')
-    @if(!in_array($viewName, ['frontend.frontend.home.index']))
+    @if(!in_array($viewName, ['frontend.home.index', 'frontend.note.index']))
         @include('frontend.layouts.footer')
     @endif
 </body>

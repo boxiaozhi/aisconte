@@ -1,6 +1,9 @@
 @extends('frontend.layouts.main')
 @section('css')
     <style type="text/css">
+        body {
+            --main: #000000;
+        }
         .menu-list a.is-active{
             background-color: #000000;
         }
@@ -21,35 +24,98 @@
                 display: none !important;
             }
             #content {
-                margin: 0 !important;
+                margin: 0;
             }
         }
         @media (min-width: 961px) {
             #m-menu {
-                display: none !important;
+                display: none;
             }
             #menu {
-                display: block !important;
+                display: block;
             }
             #content {
-                margin-left: 370px !important;
+                margin-left: 400px;
             }
         }
         .fix {
             position: fixed;
-            width: auto !important;
-            height: 100vh;
+            /*height: 100vh;*/
             top: 0;
             bottom: 0;
         }
         #menu {
             width: 340px !important;
+            padding: 0px;
+            background: #ffffff;
+        }
+        #icon-bar {
+            width: 60px !important;
+            padding: 0;
+            margin-left: 340px;
+            background: #0a0a0a;
+        }
+        #icon-menu {
+            width: 60px;
+            background: white;
+            padding: 0;
+            margin: 20px 0;
+            text-align: center;
+            cursor: pointer;
+        }
+        #icon-menu img{
+            width: 48px;
+            vertical-align: middle;
+        }
+        .menu-list a{
+            border-radius: 0px;
+        }
+        .mask {
+            position: fixed;
+            z-index: 999;
+            border: .4rem solid var(--main);
+            background: var(--main);
+        }
+        .mt {
+            top: -20rem;
+            height: 20.8rem;
+            width: 100vw;
+            left: 0;
+        }
+        .mb {
+            bottom: -20rem;
+            height: 20.8rem;
+            width: 100vw;
+            left: 0;
+        }
+        .mv {
+            bottom: 0;
+            height: 80vh;
+            width: 20.8rem;
+        }
+        .ml, .mlt {
+            left: -20rem;
+        }
+        .mr, .mrt {
+            right: -20rem;
+        }
+        .ml, .mr {
+            width: 20.8rem;
+        }
+        .mrt, .mlt {
+            top: 0;
         }
     </style>
 @endsection
 @section('content')
-<div class="container padding-t-b">
-    <div class="columns overlay" id="m-menu" style="display: none;">
+    <div class="mask mt"></div>
+    <div class="mask mb"></div>
+    <div class="mask mv ml"></div>
+    <div class="mask mv mr"></div>
+    <div class="mask mv mrt"></div>
+    <div class="mask mv mlt"></div>
+<div class="padding-t-b">
+    <div class="overlay" id="m-menu" style="display: none;">
         <div class="column is-one-third">
             <p class="title is-3 has-text-centered">NOTE</p>
             <aside class="menu">
@@ -70,8 +136,8 @@
             </aside>
         </div>
     </div>
-    <div class="columns">
-        <div class="column fix" id="menu">
+    <div class="">
+        <div class="fix" id="menu">
             <p class="title has-text-centered">NOTE</p>
             <aside class="menu">
                 <ul class="menu-list">
@@ -90,7 +156,12 @@
                 </ul>
             </aside>
         </div>
-        <div class="column" id="content">
+        <div class="fix" id="icon-bar">
+            <div id="icon-menu">
+                <img src="images/menu.png">
+            </div>
+        </div>
+        <div class="" id="content">
             <div class="row justify-content-center">
                 <div class="col-md-9">
                     <div class="n-content word-break">

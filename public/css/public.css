@@ -1,3 +1,9 @@
+/* footer */
+.footer {
+    background-color: #ffffff !important;
+}
+
+/*public*/
 .word-break{
     word-break: break-all;
 }
