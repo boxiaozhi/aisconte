@@ -3,6 +3,7 @@
     <style type="text/css">
         body {
             --main: #000000;
+            padding: 1rem;
         }
         .menu-list a.is-active{
             background-color: #000000;
@@ -24,7 +25,7 @@
                 display: none !important;
             }
             #content {
-                margin: 0;
+                margin-left: 0;
             }
         }
         @media (min-width: 961px) {
@@ -35,37 +36,22 @@
                 display: block;
             }
             #content {
-                margin-left: 400px;
+                margin-left: 20rem;
             }
         }
         .fix {
             position: fixed;
-            /*height: 100vh;*/
             top: 0;
             bottom: 0;
         }
         #menu {
-            width: 340px !important;
-            padding: 0px;
+            width: 20rem !important;
+            border-right: 1rem solid #0a0a0a;
+            padding: 1rem 0;
             background: #ffffff;
         }
-        #icon-bar {
-            width: 60px !important;
-            padding: 0;
-            margin-left: 340px;
-            background: #0a0a0a;
-        }
-        #icon-menu {
-            width: 60px;
-            background: white;
-            padding: 0;
-            margin: 20px 0;
-            text-align: center;
-            cursor: pointer;
-        }
-        #icon-menu img{
-            width: 48px;
-            vertical-align: middle;
+        #content {
+            padding: 0 1rem;
         }
         .menu-list a{
             border-radius: 0px;
@@ -78,20 +64,20 @@
         }
         .mt {
             top: -20rem;
-            height: 20.8rem;
+            height: 22rem;
             width: 100vw;
             left: 0;
         }
         .mb {
             bottom: -20rem;
-            height: 20.8rem;
+            height: 21rem;
             width: 100vw;
             left: 0;
         }
         .mv {
             bottom: 0;
             height: 80vh;
-            width: 20.8rem;
+            width: 21rem;
         }
         .ml, .mlt {
             left: -20rem;
@@ -100,10 +86,28 @@
             right: -20rem;
         }
         .ml, .mr {
-            width: 20.8rem;
+            width: 21rem;
         }
         .mrt, .mlt {
             top: 0;
+        }
+        .menu-title {
+            background: #ffffff;
+            padding: 2rem;
+            margin: 1rem 0 0 0;
+            border-bottom: 0.1rem solid #000000;
+        }
+        .menu-footer {
+            background: #ffffff;
+            padding: 2rem;
+            position: fixed;
+            width: 19rem;
+            bottom: 0;
+            margin: 0 0 1rem 0;
+            border-top: 0.1rem solid #000000;
+        }
+        #menu-aside {
+            height: calc(100% - 9.2rem) !important;
         }
     </style>
 @endsection
@@ -138,8 +142,9 @@
     </div>
     <div class="">
         <div class="fix" id="menu">
-            <p class="title has-text-centered">NOTE</p>
-            <aside class="menu">
+            <div class="menu-title has-text-centered">
+            </div>
+            <aside class="menu" id="menu-aside">
                 <ul class="menu-list">
                     @if($shareList)
                         @foreach($shareList as $share)
@@ -155,10 +160,7 @@
                     @endif
                 </ul>
             </aside>
-        </div>
-        <div class="fix" id="icon-bar">
-            <div id="icon-menu">
-                <img src="images/menu.png">
+            <div class="menu-footer">
             </div>
         </div>
         <div class="" id="content">
