@@ -2,11 +2,28 @@
 @section('css')
     <style type="text/css">
         body {
-            --main: #000000;
+            --main: #f60c3e;
+            --text: #333;
+            --text2: #444;
+            --darker: #000;
+            --btn-bg: #333;
+            --btn-text: #fff;
+            --bg: #fff;
+            --bg2: #efefef;
+            --border: #ddd;
+            --border2: #888;
+            --border-type: dotted;
+            --member: #e7b836;
+
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-family: 'Anyway Type','Myriad Pro','PingFang SC','Microsoft YaHei',sans-serif;
+            text-align: left;
+            color: var(--text);
+            line-height: 1;
+            background: var(--bg);
             padding: 1rem;
-        }
-        .menu-list a.is-active{
-            background-color: #000000;
         }
         .overlay {
             position: fixed;
@@ -46,9 +63,21 @@
         }
         #menu {
             width: 20rem !important;
-            border-right: 1rem solid #0a0a0a;
+            border-right: 1px var(--border-type) var(--border);
             padding: 1rem 0;
             background: #ffffff;
+        }
+        .menu-list a{
+            background-color: var(--bg);
+            border-bottom: 1px var(--border-type) var(--border);
+        }
+        .menu-list a:hover{
+            color: var(--main);
+        }
+        .menu-list a.is-active{
+            background-color: var(--bg);
+            color: var(--text);
+            font-weight: 700;
         }
         #content {
             padding: 0 1rem;
@@ -64,14 +93,14 @@
         }
         .mt {
             top: -20rem;
-            height: 22rem;
-            width: 100vw;
+            height: 21rem;
+            width: 100%;
             left: 0;
         }
         .mb {
             bottom: -20rem;
             height: 21rem;
-            width: 100vw;
+            width: 100%;
             left: 0;
         }
         .mv {
@@ -91,23 +120,9 @@
         .mrt, .mlt {
             top: 0;
         }
-        .menu-title {
-            background: #ffffff;
-            padding: 2rem;
-            margin: 1rem 0 0 0;
-            border-bottom: 0.1rem solid #000000;
-        }
-        .menu-footer {
-            background: #ffffff;
-            padding: 2rem;
-            position: fixed;
-            width: 19rem;
-            bottom: 0;
-            margin: 0 0 1rem 0;
-            border-top: 0.1rem solid #000000;
-        }
         #menu-aside {
-            height: calc(100% - 9.2rem) !important;
+            padding: 1rem 0 0 0;
+            height: 100% !important;
         }
     </style>
 @endsection
@@ -142,8 +157,6 @@
     </div>
     <div class="">
         <div class="fix" id="menu">
-            <div class="menu-title has-text-centered">
-            </div>
             <aside class="menu" id="menu-aside">
                 <ul class="menu-list">
                     @if($shareList)
@@ -160,8 +173,6 @@
                     @endif
                 </ul>
             </aside>
-            <div class="menu-footer">
-            </div>
         </div>
         <div class="" id="content">
             <div class="row justify-content-center">
