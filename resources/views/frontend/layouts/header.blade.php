@@ -6,7 +6,6 @@
 
     <title>{{ $pageTitle }}</title>
 
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bulma/0.7.4/css/bulma.min.css" />
     <link rel="stylesheet" href="{{ asset('css/public.css') }}">
     @yield('css')
 

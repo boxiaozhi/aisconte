@@ -1,5 +1,6 @@
 @extends('frontend.layouts.main')
 @section('css')
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bulma/0.7.4/css/bulma.min.css" />
     <style type="text/css">
         .hero-footer{
             padding: 1rem;
