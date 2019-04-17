@@ -1,6 +1,4 @@
-## AIsConte
+## IsConte
 
-AIsConte is a laravel project for personal information
+More in [isconte.com](http://isconte.com)
 
-## License
-[MIT license](http://opensource.org/licenses/MIT).
