@@ -315,5 +315,9 @@ return [
     |
     */
     'extensions' => [
+        "admin-config" => [
+            'title' => 'AdminConfig',
+            'description' => '.'
+        ]
     ],
 ];

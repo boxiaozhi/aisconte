@@ -8,8 +8,7 @@ return [
      * Each configuration group will be rendered as a TAB page
      */
     'admin_config_groups' => [
-        'sample' => 'sample-name',
-        'sample2'
+        'note' => 'Note 模块',
     ],
     /**
      * --------------------------------------------------------------------------
@@ -17,29 +16,28 @@ return [
      * --------------------------------------------------------------------------
      * access：config('sample') config('sample.value')
      */
-    'sample' => [
-        'value',
-        'value1'=>['help'=>'help content', 'default'=>'default value'],
-        'value2'=>['label text', 'placeholder'=>'typing...', 'rules'=>'required'],
-        'value3'=>['type'=>'select', 'select label text', 'options'=>['option1'=>'option1', 'option2'=>'option2']],
-//        'value4'=>['type'=>'listbox', 'options'=>['foo'=>'foo', 'bar'=>'bar']],
-        'value5'=>['type'=>'checkbox', 'options'=>['foo'=>'foo', 'bar'=>'bar']],
-        'value6'=>['type'=>'ip'],
-        'value7'=>['type'=>'mobile'],
-        'value8'=>['type'=>'color'],
-        'value9'=>['type'=>'time', 'format'=>'HH:mm'],
-        'value10'=>['type'=>'dateRange', 'dateRange label text'],
-        'value11'=>['type'=>'number', 'min'=>100, 'default'=>100],
-        'value12'=>['type'=>'rate'],
-        'value13'=>['type'=>'image', 'uniqueName'],
-        'value14'=>['type'=>'file', 'uniqueName'],
-//        'value15'=>['type'=>'multipleImage', 'removable', 'uniqueName'],
-//        'value16'=>['type'=>'multipleFile', 'removable', 'uniqueName'],
-        'value17'=>['type'=>'editor'],
-        'value18'=>['type'=>'switch'],
-        'value19'=>['type'=>'tags'],
-    ],
-    'sample2' => [
-        'value'
+    'note' => [
+        'wiz_enable' => ['type'=>'switch'],
+        'wiz_type' => ['type'=>'select', '选择展示内容', 'options'=>['share'=>'分享目录', 'category'=>'指定目录']],
+        'wiz_category',
+//        'value1'=>['help'=>'help content', 'default'=>'default value'],
+//        'value2'=>['label text', 'placeholder'=>'typing...', 'rules'=>'required'],
+//        'value3'=>['type'=>'select', 'select label text', 'options'=>['option1'=>'option1', 'option2'=>'option2']],
+////        'value4'=>['type'=>'listbox', 'options'=>['foo'=>'foo', 'bar'=>'bar']],
+//        'value5'=>['type'=>'checkbox', 'options'=>['foo'=>'foo', 'bar'=>'bar']],
+//        'value6'=>['type'=>'ip'],
+//        'value7'=>['type'=>'mobile'],
+//        'value8'=>['type'=>'color'],
+//        'value9'=>['type'=>'time', 'format'=>'HH:mm'],
+//        'value10'=>['type'=>'dateRange', 'dateRange label text'],
+//        'value11'=>['type'=>'number', 'min'=>100, 'default'=>100],
+//        'value12'=>['type'=>'rate'],
+//        'value13'=>['type'=>'image', 'uniqueName'],
+//        'value14'=>['type'=>'file', 'uniqueName'],
+////        'value15'=>['type'=>'multipleImage', 'removable', 'uniqueName'],
+////        'value16'=>['type'=>'multipleFile', 'removable', 'uniqueName'],
+//        'value17'=>['type'=>'editor'],
+//        'value18'=>['type'=>'switch'],
+//        'value19'=>['type'=>'tags'],
     ]
 ];
