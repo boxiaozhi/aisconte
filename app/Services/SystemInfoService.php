@@ -1,44 +1,78 @@
 <?php
-/**
- * 系统信息
- * User: Conte
- * Date: 2018/1/30
- * Time: 06:24
- */
-
 namespace App\Services;
-
 
 use mysqli;
 
 class SystemInfoService
 {
-    public static function base(){
-        $info = [
-            //Linux
-            ['name' => 'Uname',             'value' => php_uname()],
-            //PHP
-            ['name' => 'PHP version',       'value' => 'PHP/'.PHP_VERSION],
-            ['name' => 'CGI',               'value' => php_sapi_name()],
-            //Server
-            ['name' => 'Server',            'value' => array_get($_SERVER, 'SERVER_SOFTWARE')],
-            //Mysql
-            ['name'=> 'Database',           'value' =>'MYSQL/'.self::mysql()],
-            //Laravel
-            ['name' => 'Laravel version',   'value' => app()->version()],
-            ['name' => 'Cache driver',      'value' => config('cache.default')],
-            ['name' => 'Session driver',    'value' => config('session.driver')],
-            ['name' => 'Queue driver',      'value' => config('queue.default')],
-            //base
-            ['name' => 'Timezone',          'value' => config('app.timezone')],
-            ['name' => 'Locale',            'value' => config('app.locale')],
-            ['name' => 'Env',               'value' => config('app.env')],
-            ['name' => 'URL',               'value' => config('app.url')],
-        ];
-        return $info;
+    public function all(){
+        $types = ['OS', 'PHP', 'Service', 'Database', 'Laravel'];
+        $data = [];
+        foreach($types as $type){
+            $functionName = strtolower($type);
+            $data[$type] = $this->$functionName();
+        }
+        return $data;
     }
 
-    public static function mysql()
+    public function __call($name, $args=[]){
+        if(method_exists($this, $name)){
+            return $this->$name();
+        }
+        return [];
+    }
+
+    private function os()
+    {
+        $data = [
+            'uname' => php_uname(),
+        ];
+        return $data;
+    }
+
+    private function php()
+    {
+        $data = [
+            'version' => 'PHP/' . PHP_VERSION,
+            'CGI'     => php_sapi_name(),
+        ];
+        return $data;
+    }
+
+    private function service()
+    {
+        $data = [
+            'name' => array_get($_SERVER, 'SERVER_SOFTWARE'),
+        ];
+        return $data;
+    }
+
+    private function database()
+    {
+        $data = [
+            'mysql' => [
+                'version' => $this->mysqlInfo(),
+                ],
+            'redis' => '',
+        ];
+        return $data;
+    }
+
+    private function laravel()
+    {
+        $data = [
+            'version'        => app()->version(),
+            'timezone'       => config('app.timezone'),
+            'locale'         => config('app.locale'),
+            'env'            => config('app.env'),
+            'cache driver'   => config('cache.default'),
+            'session driver' => config('session.driver'),
+            'Queue driver'   => config('queue.default')
+        ];
+        return $data;
+    }
+
+    private function mysqlInfo()
     {
         $host     = config('database.connections.mysql.host');
         $username = config('database.connections.mysql.username');

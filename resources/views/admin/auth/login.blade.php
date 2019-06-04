@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('admin.layouts.main')
 @section('css')
     <link href="{{ asset('css/color.css') }}" rel="stylesheet">
     <style type="text/css">
