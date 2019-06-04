@@ -1,48 +1,60 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2018-04-25
- * Time: 19:57
- */
-
 namespace App\Http\Controllers\Frontend;
-
 
 use App\Http\Controllers\Controller;
 use App\Services\NoteService;
 use Boxiaozhi\Cwiz\Cwiz;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class NoteController extends Controller
 {
     public function index(Request $request)
     {
         $docGuid = isset($request->docGuid) ? trim($request->docGuid) : '';
-
-        $cwiz = new Cwiz();
         $noteService = new NoteService();
-        //分享列表
-        $shares = $cwiz->shares();
-        $shareList = isset($shares['content']) ? $shares['content'] : [];
-        //笔记详情
+        $list = [];
         $noteDetail = [];
-        if(!$docGuid && isset($shareList[0]['documentGuid'])){
-            $docGuid = $shareList[0]['documentGuid'];
-        }
-        if($docGuid){
-            $noteDetail = $cwiz->noteDetail($docGuid);
-            if($noteDetail){
-                if(isset($noteDetail['html'])){
-                    $noteDetail['html'] = $noteService->contentDeal($noteDetail['html']);
+
+        try {
+            throw new \Exception('测试一下是否好用');
+            $wiz = config('note.wiz_enable', 1);
+            if($wiz) {
+                $cwiz = new Cwiz();
+                $type = config('note.wiz_type', 'share');
+                switch($type) {
+                    case 'share':
+                        $res  = $cwiz->shares();
+                        $list = isset($res['content']) ? $res['content'] : [];
+                        break;
+                    case 'category':
+                        $category = config('note.wiz_category', '');
+                        $res      = $cwiz->noteListByCategory($category, 0, 50, 'modified', 'desc');
+                        $list     = isset($res['result']) ? $res['result'] : [];
+                        break;
+                }
+                //笔记详情
+                $noteDetail = [];
+                if(!$docGuid && isset($list[0]['documentGuid'])) {
+                    $docGuid = $list[0]['documentGuid'];
+                }
+                if($docGuid) {
+                    $noteDetail = $cwiz->noteDetail($docGuid);
+                    if($noteDetail) {
+                        if(isset($noteDetail['html'])) {
+                            $noteDetail['html'] = $noteService->contentDeal($noteDetail['html']);
+                        }
+                    }
                 }
             }
+        } catch(\Exception $e){
+            Log::info($e->getMessage());
         }
         //用户信息
-        $userInfo = $cwiz->userInfo();
+        $userInfo = $cwiz->userInfo() ?: [];
 
         return view('frontend.note.index')
-            ->with('shareList', $shareList)
+            ->with('list', $list)
             ->with('noteDetail', $noteDetail)
             ->with('userInfo', $userInfo);
     }

@@ -38,8 +38,6 @@ class NoteService
         $queryList = new QueryList();
         $data = $queryList->html($data)->removeHead()->rules($rules)->range('body')->query()->getData();
         $res = $data->all();
-        return $res[0]['body'];
-        dd($res);
         $res = $res[0]['body'];
         switch ($format) { // 转换规则
             case 'md':
