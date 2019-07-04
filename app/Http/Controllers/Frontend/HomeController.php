@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    private $docName = 'Develop/Config/isconte/home';
+    private $docName = 'Develop 开发/Config/isconte/home';
 
     public function index(Request $request)
     {
