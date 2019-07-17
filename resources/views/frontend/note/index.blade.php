@@ -185,8 +185,8 @@
             <div class="fix" id="menu">
                 <aside class="menu" id="menu-aside">
                     <ul class="menu-list">
-                        @if($shareList)
-                            @foreach($shareList as $share)
+                        @if($list)
+                            @foreach($list as $share)
                                 <li>
                                     <a href="{{ route('note.index', ['docGuid' => $share['documentGuid']]) }}"
                                        class="@if((!request('docGuid') && $loop->first) || (request('docGuid') == $share['documentGuid'])) is-active @endif"

@@ -17,7 +17,6 @@ class NoteController extends Controller
         $noteDetail = [];
 
         try {
-            throw new \Exception('测试一下是否好用');
             $wiz = config('note.wiz_enable', 1);
             if($wiz) {
                 $cwiz = new Cwiz();
@@ -50,13 +49,12 @@ class NoteController extends Controller
         } catch(\Exception $e){
             Log::info($e->getMessage());
         }
-        //用户信息
-        $userInfo = $cwiz->userInfo() ?: [];
+
+
 
         return view('frontend.note.index')
             ->with('list', $list)
-            ->with('noteDetail', $noteDetail)
-            ->with('userInfo', $userInfo);
+            ->with('noteDetail', $noteDetail);
     }
 
 }
