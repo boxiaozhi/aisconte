@@ -265,7 +265,7 @@ return [
     | each page
     |
     */
-    'show_version' => true,
+    'show_version' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -275,7 +275,7 @@ return [
     | Whether to display the environment at the footer of each page
     |
     */
-    'show_environment' => true,
+    'show_environment' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -316,8 +316,19 @@ return [
     */
     'extensions' => [
         "admin-config" => [
-            'title' => 'AdminConfig',
-            'description' => '.'
-        ]
+            'title' => 'Config',
+            'description' => 'Manage your profiles as profiles'
+        ],
+        'env' => [
+            'title' => 'Env',
+            'description' => 'Manage your env',
+            'enable' => true,
+        ],
+        'composer-viewer' => [
+            'enable' => true,
+        ],
+        'media-manager' => [
+            'disk' => 'public',
+        ],
     ],
 ];
