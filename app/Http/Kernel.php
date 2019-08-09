@@ -62,5 +62,6 @@ class Kernel extends HttpKernel
         'admin.auth' => \App\Http\Middleware\AdminAuth::class,
         'admin.login.check' => \App\Http\Middleware\AdminLoginCheck::class,
         'frontend.base' => \App\Http\Middleware\FrontendBase::class,
+        'cors' => \Barryvdh\Cors\HandleCors::class,
     ];
 }
