@@ -324,9 +324,6 @@ return [
             'description' => 'Manage your env',
             'enable' => true,
         ],
-        'composer-viewer' => [
-            'enable' => true,
-        ],
         'media-manager' => [
             'disk' => 'public',
         ],
