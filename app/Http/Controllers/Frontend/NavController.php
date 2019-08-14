@@ -10,22 +10,24 @@ namespace App\Http\Controllers\Frontend;
 
 
 use App\Http\Controllers\Controller;
-use App\Services\NaviService;
 use Illuminate\Http\Request;
+use App\Services\NavService;
 
-class NaviController extends Controller
+class NavController extends Controller
 {
     /**
      * 主页
      *
      * @param Request $request
+     *
      * @return void
      */
     public function index(Request $request)
     {
-        $naviList = NaviService::naviList();
+        $list = NavService::list();
 
-        return view('frontend.navi.index')
-            ->with('naviList', $naviList);
+        return view('frontend.nav.index')
+            ->with('list', $list)
+            ->with('pageTitle', 'Nav');
     }
 }

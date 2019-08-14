@@ -12,8 +12,8 @@ Route::group(['middleware' => 'frontend.base'], function(){
     });
 
     //导航
-    Route::group(['namespace' => 'Frontend', 'prefix' => 'navi'], function(){
-        Route::get('/','NaviController@index')->name('navi.index');
+    Route::group(['namespace' => 'Frontend', 'prefix' => 'nav'], function(){
+        Route::get('/','NavController@index')->name('nav.index');
     });
 
     //时间轴

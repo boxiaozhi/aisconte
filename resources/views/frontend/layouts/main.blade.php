@@ -9,4 +9,4 @@
         @include('frontend.layouts.footer')
     @endif
 </body>
-</html>
+F

@@ -19,6 +19,9 @@ $api->version('v1', [
     ], function($api) {
     $api->get('system', 'SystemController@all')->name('api.system.base');
     $api->get('system/{name}', 'SystemController@get')->name('api.system.base');
+
+    $api->get('navs', 'NavController@all')->name('api.nav.all');
+    $api->get('navs/labels', 'NavController@getLabels')->name('api.nav.labels');
 });
 
 $api->version('v2', function($api) {

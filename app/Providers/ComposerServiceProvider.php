@@ -14,7 +14,7 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer(['frontend.home.*', 'frontend.note.*', 'frontend.navi.*', 'frontend.timeRecord.*'], function($view) {
+        View::composer(['frontend.home.*', 'frontend.note.*', 'frontend.nav.*', 'frontend.timeRecord.*'], function($view) {
             $nameStrArr = explode('.', $view->name());
             if(count($nameStrArr) >= 2){
                 $title = config('frontendbase.'.$nameStrArr[1]) ?: config('app.name');

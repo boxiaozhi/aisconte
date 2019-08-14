@@ -265,7 +265,7 @@ return [
     | each page
     |
     */
-    'show_version' => false,
+    'show_version' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -328,4 +328,5 @@ return [
             'disk' => 'public',
         ],
     ],
+    'grid_action_class' => \Encore\Admin\Grid\Displayers\DropdownActions::class,
 ];
