@@ -1,6 +1,7 @@
 @extends('frontend.layouts.main')
 @section('css')
-    <link href="{{ asset('css/color.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/color.css') }}">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bulma/0.7.4/css/bulma.min.css" />
     <style type="text/css">
         .n-content{
             word-break: break-all !important;
@@ -21,33 +22,31 @@
 @endsection
 @section('content')
     <div class="container">
-        <div class="c-title row justify-content-center align-middle">
-            NAV
-        </div>
-        <div class="row justify-content-center">
             @foreach($list as $item)
-                <div class="col-lg-3 col-xs-6">
+                <div class="columns">
                     <!-- small box -->
-                    <div class="small-box bg-aqua">
-                        <div class="inner">
-                            <h3>{{ $item->name }}</h3>
+                    <div class="column is-full">
+                        <div class="card">
+                            <div class="card-header">
+                                <p class="card-header-title">{{ $item->name }}</p>
+                            </div>
 
-                            <p>
+                            <div class="card-content">
                                 @if($item->label)
                                     @foreach($item->label as $label)
-                                        <span class="label label-success">{{ $label }}</span>
+                                        <span class="tag is-black">{{ $label }}</span>
                                     @endforeach
                                 @endif
-                            </p>
+                            </div>
+                            <footer class="card-footer">
+                                <a href="{{ $item->url }}" class="card-footer-item" target="_blank">
+                                    Go <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </footer>
                         </div>
-
-                        <a href="{{ $item->url }}" class="small-box-footer" target="_blank">
-                            Go <i class="fa fa-arrow-circle-right"></i>
-                        </a>
                     </div>
                 </div>
             @endforeach
-        </div>
     </div>
 @endsection
 
