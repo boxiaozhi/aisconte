@@ -8,18 +8,24 @@ return [
      * Each configuration group will be rendered as a TAB page
      */
     'admin_config_groups' => [
-        'note' => 'Note 模块',
+        'base' => 'Base 基础设置',
+        'home' => 'Home 主页',
+        'frontend_nav' => 'Frontend Nav 前台导航',
     ],
+
     /**
      * --------------------------------------------------------------------------
      * Define configuration items
      * --------------------------------------------------------------------------
      * access：config('sample') config('sample.value')
      */
-    'note' => [
-        'wiz_enable' => ['type'=>'switch'],
-        'wiz_type' => ['type'=>'select', '选择展示内容', 'options'=>['share'=>'分享目录', 'category'=>'指定目录']],
-        'wiz_category',
+    'base' => [
+        'title' => ['type' => 'text', '标题'],
+    ],
+    'home' => [
+        'version' => ['type'=>'select', '版本', 'options'=>['v1'=>'v1', 'v2'=>'v2']],
+        //'wiz_enable' => ['type'=>'switch'],
+        //'wiz_category',
 //        'value1'=>['help'=>'help content', 'default'=>'default value'],
 //        'value2'=>['label text', 'placeholder'=>'typing...', 'rules'=>'required'],
 //        'value3'=>['type'=>'select', 'select label text', 'options'=>['option1'=>'option1', 'option2'=>'option2']],
@@ -39,5 +45,6 @@ return [
 //        'value17'=>['type'=>'editor'],
 //        'value18'=>['type'=>'switch'],
 //        'value19'=>['type'=>'tags'],
-    ]
+    ],
+
 ];

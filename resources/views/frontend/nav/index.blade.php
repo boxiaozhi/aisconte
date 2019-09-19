@@ -1,7 +1,7 @@
 @extends('frontend.layouts.main')
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/color.css') }}">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bulma/0.7.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bulma/0.7.5/css/bulma.min.css" />
     <style type="text/css">
         .n-content{
             word-break: break-all !important;
@@ -18,35 +18,27 @@
             background-color: #ccc !important;
             border-color: #ffffff;
         }
+        .column{
+            border-right: 1px solid #E9E9E9;
+        }
+        .no-right-border{
+            border-right: none;
+        }
+        .main{
+            margin-top: 5rem;
+        }
     </style>
 @endsection
 @section('content')
-    <div class="container">
-            @foreach($list as $item)
-                <div class="columns">
-                    <!-- small box -->
-                    <div class="column is-full">
-                        <div class="card">
-                            <div class="card-header">
-                                <p class="card-header-title">{{ $item->name }}</p>
-                            </div>
-
-                            <div class="card-content">
-                                @if($item->label)
-                                    @foreach($item->label as $label)
-                                        <span class="tag is-black">{{ $label }}</span>
-                                    @endforeach
-                                @endif
-                            </div>
-                            <footer class="card-footer">
-                                <a href="{{ $item->url }}" class="card-footer-item" target="_blank">
-                                    Go <i class="fa fa-arrow-circle-right"></i>
-                                </a>
-                            </footer>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
+    @include('frontend.layouts._header')
+    <div class="container main">
+        <div class="columns is-multiline is-mobile">
+         @foreach($list as $item)
+            <div class="column is-one-quarter @if($loop->iteration%4==0) no-right-border @endif">
+                  <a href="{{ $item->url }}" class="card-footer-item" target="_blank">{{ $item->name }}</a>
+            </div>
+         @endforeach
+        </div>
     </div>
 @endsection
 

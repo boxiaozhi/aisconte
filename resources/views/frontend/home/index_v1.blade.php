@@ -78,14 +78,7 @@
             </div>
         </div>
         <div class="hero-footer">
-            <nav class="breadcrumb is-small is-centered" aria-label="breadcrumbs">
-                <ul>
-                    <li><a>© {{ date('Y') }}</a></li>
-                    <li><a href="https://github.com/boxiaozhi/isconte"><b>isconte</b></a></li>
-                    <li><a href="https://github.com/laravel/laravel/">Powered by<strong>&nbsp;Laravel</strong></a></li>
-                    <li><a>粤ICP备17015159号</a></li>
-                </ul>
-            </nav>
+            @include("frontend.layouts._footer")
         </div>
     </section>
 @endsection
