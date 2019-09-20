@@ -62,6 +62,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'rpublic'  => [
+            'driver'     => 'local',
+            'root'       => public_path('rpublic'),
+            'url'        => env('APP_URL').'/rpublic',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key'    => env('AWS_KEY'),

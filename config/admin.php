@@ -325,7 +325,7 @@ return [
             'enable' => true,
         ],
         'media-manager' => [
-            'disk' => 'public',
+            'disk' => 'rpublic',
         ],
     ],
     'grid_action_class' => \Encore\Admin\Grid\Displayers\DropdownActions::class,
