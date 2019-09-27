@@ -10,7 +10,7 @@ return [
     'admin_config_groups' => [
         'base' => 'Base 基础设置',
         'home' => 'Home 主页',
-        'frontend_nav' => 'Frontend Nav 前台导航',
+        //'frontend_nav' => 'Frontend Nav 前台导航',
     ],
 
     /**

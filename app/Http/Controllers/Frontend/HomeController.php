@@ -9,8 +9,6 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    private $docName = 'Develop 开发/Config/isconte.homepage';
-
     /**
      * 主页
      *
@@ -24,6 +22,7 @@ class HomeController extends Controller
         $versions = config('admin-config.home.version.options');
         $versions = array_keys($versions);
         $version = in_array($version, $versions) ? $version : config('home.version');
+        $docName = env('HOME_MUBU');
 
         $title = config('base.title');
 
@@ -36,8 +35,7 @@ class HomeController extends Controller
                         'cookies' => '',
                     ];
                     $cmubu = new Cmubu($configs);
-                    $cmubuService = new CmubuService();
-                    $docInfo = $cmubu->docInfoByPath($this->docName);
+                    $docInfo = $cmubu->docInfoByPath($docName);
                     $data = $cmubu->docContent($docInfo['id']); //mubu 文档ID
                     $keyArr = [
                         'Nickname',
@@ -45,6 +43,11 @@ class HomeController extends Controller
                         'Contact',
                         'SiteLink',
                     ];
+                    $info = [];
+                    $cmubuService = new CmubuService();
+                    foreach($keyArr as $key){
+                        $info[$key] = $cmubuService->infoByTextName($data, $key);
+                    }
                 } catch(\Exception $e){
                     abort(404, $e->getMessage());
                 }
@@ -55,6 +58,7 @@ class HomeController extends Controller
 
         return view('frontend.home.index_'.$version)
             ->with('version', $version)
-            ->with('title', $title);
+            ->with('title', $title)
+            ->with('info', isset($info) ? $info : []);
     }
 }
