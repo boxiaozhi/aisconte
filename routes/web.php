@@ -3,7 +3,8 @@
 Route::group(['middleware' => 'frontend.base'], function(){
     //主页
     Route::group(['namespace' => 'Frontend'], function(){
-        Route::get('/','HomeController@index')->name('index');
+        //Route::get('/','HomeController@index')->name('index');
+        Route::get('/','NoteController@index')->name('note.index');
     });
 
     //笔记

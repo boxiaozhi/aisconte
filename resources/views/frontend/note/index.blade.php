@@ -174,7 +174,9 @@
             <div class="btn-trigger" id="tigger"><i class="fas fa-bars"></i></div>
         </div>
     </div>
-    <div class="mask mb"></div>
+    <div class="mask mb">
+        @include("frontend.layouts._footer")
+    </div>
     <div class="mask mv ml"></div>
     <div class="mask mv mr"></div>
     <div class="mask mv mrt"></div>
