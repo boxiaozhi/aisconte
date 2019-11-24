@@ -75,7 +75,7 @@
         }
         .mb {
             bottom: -20rem;
-            height: 21rem;
+            height: 23rem;
             width: 100%;
             left: 0;
         }
@@ -165,6 +165,12 @@
                 display: none;
             }
         }
+        .c-bottom-breadcrumb {
+            line-height: 2rem;
+        }
+        .c-bottom-breadcrumb a {
+            color: #fff !important;
+        }
     </style>
 @endsection
 @section('content')
@@ -175,7 +181,13 @@
         </div>
     </div>
     <div class="mask mb">
-        @include("frontend.layouts._footer")
+        <nav class="breadcrumb is-small is-centered c-bottom-breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li><a>© {{ date('Y') }}</a></li>
+                <li><a href=""><b>isconte</b></a></li>
+                <li><a href="http://www.beian.miit.gov.cn/">粤ICP备17015159号-1</a></li>
+            </ul>
+        </nav>
     </div>
     <div class="mask mv ml"></div>
     <div class="mask mv mr"></div>
