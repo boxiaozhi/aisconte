@@ -4,9 +4,6 @@
 @include('frontend.layouts.header')
 <body>
     @yield('content')
+    @yield('footer')
     @include('frontend.layouts.script')
-    @if(!in_array($viewName, ['frontend.home.index', 'frontend.note.index']))
-        @include('frontend.layouts.footer')
-    @endif
 </body>
-</html>

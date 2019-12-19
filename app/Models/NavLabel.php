@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class NaviLabel extends Model
+class NavLabel extends Model
 {
-    protected $table = 'navi_labels';
+    protected $table = 'nav_labels';
 }

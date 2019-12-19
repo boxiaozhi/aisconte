@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class NaviCategory extends Model
+class NavCategory extends Model
 {
-    protected $table = 'navi_categories';
+    protected $table = 'nav_categories';
 }

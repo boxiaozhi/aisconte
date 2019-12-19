@@ -11,5 +11,7 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index');
-
+    $router->resource('nav', NavInfoController::class);
+    $router->resource('nav-label', NavLabelController::class);
+    $router->resource('nav-category', NavCategoryController::class);
 });
